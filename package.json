@@ -75,7 +75,7 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "npm run fetch && npm run build",
     "deploy": "gh-pages -d build",
     "fetch": "node scripts/api.js",
     "start": "node scripts/start.js",
