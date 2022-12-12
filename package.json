@@ -1,6 +1,7 @@
 {
-  "name": "francais-app",
+  "name": "my-francais-words",
   "version": "0.1.0",
+  "homepage": "https://vincent1230.github.io/my-francais-words",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
@@ -70,6 +71,8 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "fetch": "node scripts/api.js",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
