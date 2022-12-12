@@ -49,7 +49,12 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
           width: "100vw",
         }}
         grid={{
-          column: 6,
+          xs: 1,
+          sm: 2,
+          md: 2,
+          lg: 3,
+          xl: 6,
+          xxl: 6,
         }}
         dataSource={list}
         renderItem={(item: Word) => (
