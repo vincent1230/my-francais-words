@@ -45,7 +45,7 @@ function handleResult(queryWord, e) {
         return span.classNames === "pron" && span.childNodes.length >= 2;
       })[0]
       .childNodes.filter((child) => {
-        return child.toString().length < 10;
+        return child.toString().length < 50;
       })
       .join(" ")
       .trim();
