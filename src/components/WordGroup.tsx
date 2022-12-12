@@ -7,8 +7,9 @@ import { WordQueryBlock } from "./WordQueryBlock";
 export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   const { words } = props;
   const location = useLocation();
+  console.log(location);
 
-  const path = location.pathname.replace("/my-francais-words/", "");
+  const path = location.pathname.replace("/", "");
   const header = path.charAt(0).toUpperCase() + path.slice(1);
   const h = decodeURIComponent(header);
   return (

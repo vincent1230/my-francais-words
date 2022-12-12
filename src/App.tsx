@@ -9,10 +9,7 @@ function App() {
 
   return (
     <Routes>
-      <Route
-        path="/my-francais-words"
-        element={<WordGroup words={nationaliteWords} />}
-      >
+      <Route path="/" element={<WordGroup words={nationaliteWords} />}>
         <Route
           path="nationalité"
           element={<WordGroup words={nationaliteWords} />}

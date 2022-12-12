@@ -25,7 +25,7 @@ root.render(
         },
       }}
     >
-      <BrowserRouter>
+      <BrowserRouter basename="my-francais-words">
         <App />
       </BrowserRouter>
     </ConfigProvider>
