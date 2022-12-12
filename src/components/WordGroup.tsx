@@ -13,7 +13,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   const header = path.charAt(0).toUpperCase() + path.slice(1);
   const h = decodeURIComponent(header);
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <h1 style={{ paddingLeft: 58, fontSize: 50 }}>{h}</h1>
       <Divider style={{ margin: 0 }} />
       <div>
