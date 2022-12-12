@@ -15,7 +15,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   return (
     <div>
       <h1 style={{ paddingLeft: 58, fontSize: 50 }}>{h}</h1>
-      <Divider />
+      <Divider style={{ margin: 0 }} />
       <div>
         <List
           dataSource={words}
