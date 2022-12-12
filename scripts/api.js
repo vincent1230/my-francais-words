@@ -93,19 +93,26 @@ async function getApi(queryWord) {
     });
 }
 
-var words = require("./words.js").words;
-Promise.all(words.map((w) => getApi(w)))
-  .then((values) => {
-    const result = new Array();
-    values.forEach((e) => {
-      result.push(e);
+const fetchWords = function (word, name) {
+  Promise.all(word.map((w) => getApi(w)))
+    .then((values) => {
+      const result = new Array();
+      values.forEach((e) => {
+        result.push(e);
+      });
+      return result;
+    })
+    .then((result) => {
+      const json = JSON.stringify(result);
+      fs.writeFile(`./src/data/${name}.json`, json);
+    })
+    .then((e) => {
+      console.log("done");
     });
-    return result;
-  })
-  .then((result) => {
-    const json = JSON.stringify(result);
-    fs.writeFile("./src/data.json", json);
-  })
-  .then((e) => {
-    console.log("done");
-  });
+};
+
+var nationalite = require("./wordslist.js").nationalite;
+var semaine = require("./wordslist.js").semaine;
+
+fetchWords(nationalite, "nationalite");
+fetchWords(semaine, "semaine");
