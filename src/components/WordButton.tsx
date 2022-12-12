@@ -9,7 +9,11 @@ export const WordButton = (props: {
   const { query, word } = props;
   const fontWeight = query === word.word ? "bold" : "normal";
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+      }}
+    >
       <Button
         style={{
           width: "100%",

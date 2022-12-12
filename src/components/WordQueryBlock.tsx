@@ -49,7 +49,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
           sm: 2,
           md: 2,
           lg: 3,
-          xl: 6,
+          xl: 4,
           xxl: 6,
         }}
         dataSource={list}
