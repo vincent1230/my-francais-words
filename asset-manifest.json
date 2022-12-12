@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/my-francais-words/static/css/main.1ef3a49a.css",
-    "main.js": "/my-francais-words/static/js/main.ea197f26.js",
+    "main.js": "/my-francais-words/static/js/main.fd0244cc.js",
     "static/js/787.ae79111c.chunk.js": "/my-francais-words/static/js/787.ae79111c.chunk.js",
     "index.html": "/my-francais-words/index.html",
     "main.1ef3a49a.css.map": "/my-francais-words/static/css/main.1ef3a49a.css.map",
-    "main.ea197f26.js.map": "/my-francais-words/static/js/main.ea197f26.js.map",
+    "main.fd0244cc.js.map": "/my-francais-words/static/js/main.fd0244cc.js.map",
     "787.ae79111c.chunk.js.map": "/my-francais-words/static/js/787.ae79111c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1ef3a49a.css",
-    "static/js/main.ea197f26.js"
+    "static/js/main.fd0244cc.js"
   ]
 }
