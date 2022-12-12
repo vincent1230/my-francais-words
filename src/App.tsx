@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Guide />}></Route>
+      <Route path="/" element={<Guide />} />
       <Route
         path="nationalité"
         element={<WordGroup words={nationaliteWords} />}
