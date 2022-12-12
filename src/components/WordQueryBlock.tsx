@@ -20,10 +20,9 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
   });
 
   return (
-    <div>
+    <div style={{ width: "100vw" }}>
       <div
         style={{
-          width: "100vw",
           display: "flex",
           paddingLeft: 34,
         }}
@@ -45,9 +44,6 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
       </div>
 
       <List
-        style={{
-          width: "100vw",
-        }}
         grid={{
           xs: 1,
           sm: 2,
