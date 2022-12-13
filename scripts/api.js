@@ -111,8 +111,6 @@ const fetchWords = function (word, name) {
     });
 };
 
-var nationalite = require("./wordslist.js").nationalite;
-var semaine = require("./wordslist.js").semaine;
-
-fetchWords(nationalite, "nationalite");
-fetchWords(semaine, "semaine");
+fetchWords(require("./wordslist.js").nationalite, "nationalite");
+fetchWords(require("./wordslist.js").semaine, "semaine");
+fetchWords(require("./wordslist.js").unit1, "unit1");
