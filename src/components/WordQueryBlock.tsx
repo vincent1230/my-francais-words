@@ -33,13 +33,13 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
   }
 
   // https://antv.vision/zh/docs/specification/language/palette
-  let color = "#000";
+  let wordColor = "#000";
   if (info && info.includes("masculine")) {
-    color = "#025DF4";
+    wordColor = "#1677ff";
   } else if (info && info.includes("feminine")) {
-    color = "#FF5CA2";
+    wordColor = "#FF5CA2";
   } else if (info && info.includes("preposition")) {
-    color = "#FF6B3B";
+    wordColor = "#FF6B3B";
   }
 
   return (
@@ -60,7 +60,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
               "Zilla Slab, Serif, sans-serif, Verdana, Arial, Tahoma, Open Sans",
             marginTop: 2,
             marginBottom: 2,
-            color: color,
+            color: wordColor,
             display: "inline",
           }}
           rel="noreferrer"
@@ -83,7 +83,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
         dataSource={list}
         renderItem={(item: Word) => (
           <List.Item>
-            <WordButton query={query.query} word={item} />
+            <WordButton query={query.query} word={item} wordColor={wordColor} />
           </List.Item>
         )}
       />
