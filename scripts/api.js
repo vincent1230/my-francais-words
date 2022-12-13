@@ -55,6 +55,10 @@ function handleResult(queryWord, e) {
 
   const a = root.getElementsByTagName("a");
   const result = new Array();
+  const pos = root.getElementsByTagName("span").filter((span) => {
+    return span.classNames.includes("pos");
+  });
+
   a.forEach((element) => {
     const title = element.getAttribute("title");
     const mp3Url = element.getAttribute("data-src-mp3");
@@ -73,10 +77,14 @@ function handleResult(queryWord, e) {
           }
         }
       }
-      result.push({
-        url: mp3Url,
-        word: t,
-      });
+
+      if (result.length < 2 || t.length <= 18) {
+        result.push({
+          url: mp3Url,
+          word: t,
+          pos: pos.length > 0 ? pos[0].textContent.toLocaleLowerCase() : null,
+        });
+      }
     }
   });
   return { query: queryWord, result, pron };

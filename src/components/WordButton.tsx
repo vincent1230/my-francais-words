@@ -8,7 +8,7 @@ export const WordButton = (props: {
 }): ReactElement => {
   const { query, word } = props;
   const fontWeight =
-    query === word.word ||
+    query.toLocaleLowerCase() === word.word.toLocaleLowerCase() ||
     `le ${query}` === word.word ||
     `la ${query}` === word.word ||
     `l’${query}` === word.word
@@ -27,6 +27,9 @@ export const WordButton = (props: {
           paddingTop: 15,
           paddingBottom: 15,
           fontWeight: fontWeight,
+          letterSpacing: 1,
+          fontFamily:
+            "Zilla Slab, Serif, sans-serif, Verdana, Arial, Tahoma, Open Sans",
           margin: 10,
         }}
         onClick={() => {

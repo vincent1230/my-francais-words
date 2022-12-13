@@ -12,7 +12,7 @@ function App() {
       <Route path="/" element={<Guide />} />
       <Route path="nationalité" element={<WordGroup words={nationalite} />} />
       <Route path="semaine" element={<WordGroup words={semaine} />} />
-      <Route path="unit1" element={<WordGroup words={unit1} />} />
+      <Route path="unité-1" element={<WordGroup words={unit1} />} />
     </Routes>
   );
 }

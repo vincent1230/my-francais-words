@@ -12,12 +12,35 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
 
   let time = 0;
   const list = query.result.filter((word) => {
-    if (word.word === query.query) {
+    if (word.word.toLocaleLowerCase() === query.query.toLocaleLowerCase()) {
       time += 1;
       return time <= 1;
     }
     return true;
   });
+
+  let info: string | null | undefined = "";
+  if (query.result) {
+    const posArr = query.result.map((w) => {
+      return w.pos;
+    });
+    let unique = posArr.filter((c, index) => {
+      return posArr.indexOf(c) === index;
+    });
+    if (unique && unique.length === 1) {
+      info = unique[0];
+    }
+  }
+
+  // https://antv.vision/zh/docs/specification/language/palette
+  let color = "#000";
+  if (info && info.includes("masculine")) {
+    color = "#025DF4";
+  } else if (info && info.includes("feminine")) {
+    color = "#FF5CA2";
+  } else if (info && info.includes("preposition")) {
+    color = "#FF6B3B";
+  }
 
   return (
     <div style={{ width: "100vw" }}>
@@ -33,13 +56,18 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
           style={{
             fontSize: 25,
             fontWeight: "bold",
-            fontFamily: "arial",
+            fontFamily:
+              "Zilla Slab, Serif, sans-serif, Verdana, Arial, Tahoma, Open Sans",
             marginTop: 2,
             marginBottom: 2,
+            color: color,
+            display: "inline",
           }}
           rel="noreferrer"
         >
-          {`${query.query} [${query.pron}]`}
+          <span>{query.query}</span>
+          <span style={{}}>{`, ${info}, `}</span>
+          <span style={{ fontFamily: "Arial" }}>{`[${query.pron}]`}</span>
         </a>
       </div>
 
