@@ -61,7 +61,17 @@ function handleResult(queryWord, e) {
     if (mp3Url && title && !title.includes(" in ")) {
       let t = title.replace("Pronunciation for", "").trim();
       if (t == "") {
-        t = queryWord;
+        const parent = element?.parentNode?.parentNode?.parentNode?.parentNode;
+        if (parent) {
+          const orth = parent.getElementsByTagName("span").filter((span) => {
+            return span.classNames && span.classNames == "orth";
+          });
+          if (orth && orth.length > 0) {
+            t = orth[0].text;
+          } else {
+            t = queryWord;
+          }
+        }
       }
       result.push({
         url: mp3Url,
