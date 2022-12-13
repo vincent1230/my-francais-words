@@ -117,7 +117,7 @@ const fetchWords = function (word, name) {
       fs.writeFile(`./src/data/${name}.json`, json);
     })
     .then((e) => {
-      console.log("done");
+      console.log(`${name} list done.`);
     });
 };
 
