@@ -11,7 +11,7 @@ export const WordButton = (props: {
     query === word.word ||
     `le ${query}` === word.word ||
     `la ${query}` === word.word ||
-    `l'${query}` === word.word
+    `l’${query}` === word.word
       ? "bold"
       : "normal";
   return (
