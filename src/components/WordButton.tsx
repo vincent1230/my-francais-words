@@ -7,7 +7,13 @@ export const WordButton = (props: {
   word: Word;
 }): ReactElement => {
   const { query, word } = props;
-  const fontWeight = query === word.word ? "bold" : "normal";
+  const fontWeight =
+    query === word.word ||
+    `le ${query}` === word.word ||
+    `la ${query}` === word.word ||
+    `l'${query}` === word.word
+      ? "bold"
+      : "normal";
   return (
     <div
       style={{
