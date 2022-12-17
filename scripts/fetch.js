@@ -62,27 +62,48 @@ function handleResult(queryWord, e) {
   a.forEach((element) => {
     const title = element.getAttribute("title");
     const mp3Url = element.getAttribute("data-src-mp3");
+    let quote;
+    let extra;
     if (mp3Url && title && !title.includes(" in ")) {
-      let t = title.replace("Pronunciation for", "").trim();
-      if (t == "") {
+      let word = title.replace("Pronunciation for", "").trim();
+      if (word == "") {
         const parent = element?.parentNode?.parentNode?.parentNode?.parentNode;
         if (parent) {
           const orth = parent.getElementsByTagName("span").filter((span) => {
             return span.classNames && span.classNames == "orth";
           });
+          const quoteTag = parent
+            .getElementsByTagName("span")
+            .filter((span) => {
+              return span.classNames && span.classNames == "quote";
+            });
           if (orth && orth.length > 0) {
-            t = orth[0].text;
+            word = orth[0].text;
           } else {
-            t = queryWord;
+            word = queryWord;
+          }
+
+          if (quoteTag && quoteTag.length > 0) {
+            quote = quoteTag[0].text;
           }
         }
       }
 
-      if (result.length < 2 || t.length <= 18) {
+      if (mp3Url.includes("fr_exa_")) {
+        extra = mp3Url
+          .replace("https://www.collinsdictionary.com/sounds/hwd_sounds/", "")
+          .replace(".mp3", "")
+          .replace("fr_exa_", "")
+          .replaceAll("_", " ");
+      }
+
+      if (result.length < 2 || word.length <= 18) {
         result.push({
           url: mp3Url,
-          word: t,
+          word,
+          quote: quote?.toString(),
           pos: pos.length > 0 ? pos[0].textContent.toLocaleLowerCase() : null,
+          extra,
         });
       }
     }
@@ -96,6 +117,7 @@ async function getApi(queryWord) {
       return handleResult(queryWord, e);
     })
     .catch((e) => {
+      console.log(e);
       const root = HTMLParser.parse(e);
       const action = root
         .getElementsByTagName("form")[0]
@@ -131,6 +153,6 @@ const fetchWords = function (word, name) {
     });
 };
 
-fetchWords(require("./wordslist.js").nationalite, "nationalite");
-fetchWords(require("./wordslist.js").semaine, "semaine");
+// fetchWords(require("./wordslist.js").nationalite, "nationalite");
+// fetchWords(require("./wordslist.js").semaine, "semaine");
 fetchWords(require("./wordslist.js").unit1, "unit1");
