@@ -84,7 +84,7 @@ function handleResult(queryWord, e) {
           }
 
           if (quoteTag && quoteTag.length > 0) {
-            quote = quoteTag[0].text;
+            quote = quoteTag[0].text.trim();
           }
         }
       }
@@ -97,11 +97,21 @@ function handleResult(queryWord, e) {
           .replaceAll("_", " ");
       }
 
-      if (result.length < 2 || word.length <= 18) {
+      let rightLength = true;
+      if (extra) {
+        if (word === extra || !quote) {
+          rightLength = word.length <= 18;
+        } else {
+          rightLength = quote.length <= 18;
+        }
+      } else {
+        rightLength = word.length <= 18;
+      }
+      if (result.length < 2 || rightLength) {
         result.push({
           url: mp3Url,
           word,
-          quote: quote?.toString(),
+          quote,
           pos: pos.length > 0 ? pos[0].textContent.toLocaleLowerCase() : null,
           extra,
         });
@@ -117,7 +127,10 @@ async function getApi(queryWord) {
       return handleResult(queryWord, e);
     })
     .catch((e) => {
-      console.log(e);
+      if (e && !e.toString().includes("403")) {
+        console.log(e);
+      }
+
       const root = HTMLParser.parse(e);
       const action = root
         .getElementsByTagName("form")[0]
@@ -153,6 +166,6 @@ const fetchWords = function (word, name) {
     });
 };
 
-// fetchWords(require("./wordslist.js").nationalite, "nationalite");
-// fetchWords(require("./wordslist.js").semaine, "semaine");
+fetchWords(require("./wordslist.js").nationalite, "nationalite");
+fetchWords(require("./wordslist.js").semaine, "semaine");
 fetchWords(require("./wordslist.js").unit1, "unit1");

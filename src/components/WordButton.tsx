@@ -8,13 +8,21 @@ export const WordButton = (props: {
   wordColor: string;
 }): ReactElement => {
   const { query, word, wordColor } = props;
+  const extraEqual =
+    !word.extra &&
+    word.word.toLocaleLowerCase().replaceAll("’", " ") === word.extra;
+
   const fontWeight =
-    query.toLocaleLowerCase() === word.word.toLocaleLowerCase() ||
-    `le ${query}` === word.word ||
-    `la ${query}` === word.word ||
-    `l’${query}` === word.word
-      ? "900"
+    extraEqual || query.toLocaleLowerCase() === word.word.toLocaleLowerCase()
+      ? // `le ${query}` === word.word ||
+        // `la ${query}` === word.word ||
+        // `l’${query}` === word.word
+        "900"
       : "400";
+
+  const displayedWord =
+    word.extra && word.quote && !extraEqual ? word.quote : word.word;
+
   return (
     <div
       style={{
@@ -44,7 +52,7 @@ export const WordButton = (props: {
             new Audio(word.url).play();
           }}
         >
-          {word.word}
+          {displayedWord}
         </Button>
       </ConfigProvider>
     </div>
