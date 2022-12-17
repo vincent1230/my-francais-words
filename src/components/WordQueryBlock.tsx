@@ -11,13 +11,16 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
     .toLocaleLowerCase();
 
   let time = 0;
-  const list = query.result.filter((word) => {
+  let list = query.result.filter((word) => {
     if (word.word.toLocaleLowerCase() === query.query.toLocaleLowerCase()) {
       time += 1;
       return time <= 1;
     }
     return true;
   });
+  if (list.length > 6) {
+    list = list.slice(0, 6);
+  }
 
   let info: string | null | undefined = "";
   if (query.result) {

@@ -13,11 +13,13 @@ export const WordButton = (props: {
     word.word.toLocaleLowerCase().replaceAll("’", " ") === word.extra;
 
   const fontWeight =
-    extraEqual || query.toLocaleLowerCase() === word.word.toLocaleLowerCase()
-      ? // `le ${query}` === word.word ||
-        // `la ${query}` === word.word ||
-        // `l’${query}` === word.word
-        "900"
+    extraEqual ||
+    query.toLocaleLowerCase() === word.word.toLocaleLowerCase() ||
+    `le ${query}` === word.word ||
+    `la ${query}` === word.word ||
+    `les ${query}` === word.word ||
+    `l’${query}` === word.word
+      ? "900"
       : "400";
 
   const displayedWord =
