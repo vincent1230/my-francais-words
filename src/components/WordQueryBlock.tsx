@@ -56,10 +56,9 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
           style={{
             fontSize: 25,
             fontWeight: "bold",
-            fontFamily:
-              "Zilla Slab, Serif, sans-serif, Verdana, Arial, Tahoma, Open Sans",
             marginTop: 2,
             marginBottom: 2,
+            letterSpacing: 0.1,
             color: wordColor,
             display: "inline",
           }}

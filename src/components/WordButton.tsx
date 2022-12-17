@@ -13,8 +13,8 @@ export const WordButton = (props: {
     `le ${query}` === word.word ||
     `la ${query}` === word.word ||
     `l’${query}` === word.word
-      ? "bold"
-      : "normal";
+      ? "900"
+      : "400";
   return (
     <div
       style={{
@@ -35,9 +35,7 @@ export const WordButton = (props: {
             paddingTop: 15,
             paddingBottom: 15,
             fontWeight: fontWeight,
-            letterSpacing: 1,
-            fontFamily:
-              "Zilla Slab, Serif, sans-serif, Verdana, Arial, Tahoma, Open Sans",
+            letterSpacing: 0.1,
             margin: 10,
           }}
           color="#000"
