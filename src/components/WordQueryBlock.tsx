@@ -16,6 +16,10 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
       time += 1;
       return time <= 1;
     }
+    // 暂不扩展词汇
+    if (word.extra) {
+      return false;
+    }
     return true;
   });
   if (list.length > 6) {

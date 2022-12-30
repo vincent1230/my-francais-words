@@ -169,3 +169,4 @@ const fetchWords = function (word, name) {
 fetchWords(require("./wordslist.js").nationalite, "nationalite");
 fetchWords(require("./wordslist.js").semaine, "semaine");
 fetchWords(require("./wordslist.js").unit1, "unit1");
+fetchWords(require("./wordslist.js").unit2, "unit2");
