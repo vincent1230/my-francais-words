@@ -22,7 +22,7 @@ function getCloudscraper(queryWord) {
   return cloudscraper({
     method: "GET",
     url: `https://www.collinsdictionary.com/dictionary/french-english/${encodeURIComponent(
-      queryWord.toLowerCase().trim()
+      queryWord.toLowerCase().trim().replaceAll(" ", "-")
     )}`,
   });
 }
@@ -50,7 +50,7 @@ function handleResult(queryWord, e) {
       .join(" ")
       .trim();
   } catch (error) {
-    console.error(`pron error: ${error}`);
+    console.error(`pron error: [${queryWord}] ${error}`);
   }
 
   const a = root.getElementsByTagName("a");

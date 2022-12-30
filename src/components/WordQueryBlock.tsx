@@ -72,8 +72,10 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
           rel="noreferrer"
         >
           <span>{query.query}</span>
-          <span style={{}}>{`, ${info}, `}</span>
-          <span style={{ fontFamily: "Arial" }}>{`[${query.pron}]`}</span>
+          <span style={{}}>{`, ${info}`}</span>
+          {query.pron && (
+            <span style={{ fontFamily: "Arial" }}>{`, [${query.pron}]`}</span>
+          )}
         </a>
       </div>
 

@@ -7,7 +7,7 @@ export interface Word {
 }
 
 export interface WordQuery {
-  pron?: string;
+  pron?: string | null;
   query: string;
   result: Word[];
 }
