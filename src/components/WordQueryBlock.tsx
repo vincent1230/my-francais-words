@@ -1,4 +1,4 @@
-import { List } from "antd";
+import { List, Tooltip } from "antd";
 import { ReactElement } from "react";
 import { Word, WordQuery } from "../interfaces";
 import { WordButton } from "./WordButton";
@@ -75,13 +75,12 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
           }}
           rel="noreferrer"
         >
-          <div>
+          <Tooltip placement="bottom" title={info} color={wordColor}>
             <span style={{ textDecoration: "underline" }}>{query.query}</span>
-            {/* <span>{` ${info}`}</span> */}
             {query.pron && (
               <span style={{ fontFamily: "Arial" }}>{` [${query.pron}]`}</span>
             )}
-          </div>
+          </Tooltip>
         </a>
 
         <List
