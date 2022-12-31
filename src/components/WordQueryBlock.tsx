@@ -54,7 +54,6 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
       <div
         style={{
           display: "flex",
-          paddingLeft: 34,
           justifyContent: "center",
         }}
       >
@@ -72,7 +71,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "flex-end",
-            minWidth: "300px",
+            width: 270,
           }}
           rel="noreferrer"
         >
@@ -85,7 +84,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
         </a>
 
         <List
-          style={{ minWidth: 600 }}
+          style={{ width: 600 }}
           grid={{
             column: 2,
           }}
@@ -142,7 +141,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
                       ),
                     }}
                     style={{
-                      objectFit: "cover",
+                      objectFit: "scale-down",
                       overflow: "hidden",
                     }}
                   />
