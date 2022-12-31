@@ -67,34 +67,45 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
             marginBottom: 2,
             letterSpacing: 0.1,
             color: wordColor,
-            display: "inline",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-end",
+            minWidth: "350px",
           }}
           rel="noreferrer"
         >
-          <span style={{ textDecoration: "underline" }}>{query.query}</span>
-          <span>{` ${info}`}</span>
-          {query.pron && (
-            <span style={{ fontFamily: "Arial" }}>{` [${query.pron}]`}</span>
-          )}
+          <div>
+            <span style={{ textDecoration: "underline" }}>{query.query}</span>
+            {/* <span>{` ${info}`}</span> */}
+            {query.pron && (
+              <span style={{ fontFamily: "Arial" }}>{` [${query.pron}]`}</span>
+            )}
+          </div>
         </a>
-      </div>
 
-      <List
-        grid={{
-          xs: 1,
-          sm: 2,
-          md: 2,
-          lg: 3,
-          xl: 4,
-          xxl: 6,
-        }}
-        dataSource={list}
-        renderItem={(item: Word) => (
-          <List.Item>
-            <WordButton query={query.query} word={item} wordColor={wordColor} />
-          </List.Item>
-        )}
-      />
+        <List
+          style={{ flexGrow: "1" }}
+          grid={{
+            xs: 1,
+            sm: 2,
+            md: 2,
+            lg: 3,
+            xl: 4,
+            xxl: 6,
+          }}
+          dataSource={list}
+          renderItem={(item: Word) => (
+            <List.Item>
+              <WordButton
+                query={query.query}
+                word={item}
+                wordColor={wordColor}
+              />
+            </List.Item>
+          )}
+        />
+      </div>
     </div>
   );
 };

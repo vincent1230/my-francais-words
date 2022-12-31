@@ -40,6 +40,13 @@ export const WordButton = (props: {
         {displayedWord.replace("la ", "")}
       </span>
     );
+  } else if (displayedWord.startsWith("l’")) {
+    coloredWord = (
+      <span>
+        <span style={{ color: wordColor }}>l’</span>
+        {displayedWord.replace("l’", "")}
+      </span>
+    );
   } else {
     coloredWord = <span>{displayedWord}</span>;
   }
