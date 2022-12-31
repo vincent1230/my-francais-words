@@ -148,10 +148,14 @@ async function imageSearch(result, title) {
   }
 
   console.log(`image search: ${result.query}`);
-  const query = result.query;
+  let queryWord = result.query;
+
+  if (title === "nationalite" && result.result[0].pos.includes("noun")) {
+    queryWord = `${result.query} drapeau`;
+  }
 
   let data = JSON.stringify({
-    q: result.query,
+    q: queryWord,
     gl: "fr",
     hl: "fr",
     autocorrect: true,
