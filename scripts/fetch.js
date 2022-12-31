@@ -19,6 +19,7 @@ const fs = require("fs").promises;
 var HTMLParser = require("node-html-parser");
 const axios = require("axios");
 const { resourceLimits } = require("worker_threads");
+require("dotenv").config();
 
 function getCloudscraper(queryWord) {
   return cloudscraper({
@@ -160,7 +161,7 @@ async function imageSearch(result, title) {
     method: "post",
     url: "https://google.serper.dev/images",
     headers: {
-      "X-API-KEY": "d5bf72c98b8d681a2ef5e9e5487f39d6a43cb21b",
+      "X-API-KEY": process.env.SERPER_API_KEY,
       "Content-Type": "application/json",
     },
     data: data,

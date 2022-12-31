@@ -24,3 +24,5 @@ yarn-error.log*
 
 /src/data
 /scripts/wordslist.js
+
+.env
