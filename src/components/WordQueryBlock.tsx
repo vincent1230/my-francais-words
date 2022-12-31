@@ -71,7 +71,8 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "flex-end",
-            width: 270,
+            paddingRight: 24,
+            width: 300,
           }}
           rel="noreferrer"
         >
@@ -109,9 +110,9 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
               alignItems: "flex-end",
             }}
             grid={{
-              column: 5,
+              column: 3,
             }}
-            dataSource={query.image_results.slice(0, 5)}
+            dataSource={query.image_results.slice(0, 3)}
             renderItem={(item: ImageResult) => (
               <List.Item>
                 <div
