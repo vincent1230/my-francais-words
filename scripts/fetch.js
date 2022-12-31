@@ -17,6 +17,8 @@ require("../config/env");
 var cloudscraper = require("cloudscraper");
 const fs = require("fs").promises;
 var HTMLParser = require("node-html-parser");
+const axios = require("axios");
+const { resourceLimits } = require("worker_threads");
 
 function getCloudscraper(queryWord) {
   return cloudscraper({
@@ -121,7 +123,61 @@ function handleResult(queryWord, e) {
   return { query: queryWord, result, pron };
 }
 
-async function getApi(queryWord) {
+async function imageSearch(result, title) {
+  let cacheResult;
+  try {
+    cacheResult = require(`../src/data/semaine.json`);
+  } catch (e) {
+    // console.log(e);
+  }
+
+  if (cacheResult) {
+    const filterResult = cacheResult.filter((e) => {
+      return e.query == result.query;
+    });
+    if (
+      filterResult &&
+      filterResult.length > 0 &&
+      filterResult[0].image_results
+    ) {
+      result.image_results = filterResult[0].image_results;
+      console.log(`image cache: ${result.query}`);
+      return result;
+    }
+  }
+
+  console.log(`image search: ${result.query}`);
+  const query = result.query;
+
+  let data = JSON.stringify({
+    q: result.query,
+    gl: "fr",
+    hl: "fr",
+    autocorrect: true,
+  });
+
+  let config = {
+    method: "post",
+    url: "https://google.serper.dev/images",
+    headers: {
+      "X-API-KEY": "d5bf72c98b8d681a2ef5e9e5487f39d6a43cb21b",
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  return axios(config)
+    .then((response) => {
+      result.image_results = response.data.images;
+      return result;
+    })
+    .catch((error) => {
+      console.log(error);
+      return result;
+    });
+}
+
+async function getApi(queryWord, title) {
   return getCloudscraper(queryWord)
     .then((e) => {
       return handleResult(queryWord, e);
@@ -143,11 +199,12 @@ async function getApi(queryWord) {
       return getCloudscraperByUrl(newUrl).then((e) => {
         return handleResult(queryWord, e);
       });
-    });
+    })
+    .then((result) => imageSearch(result, title));
 }
 
-const fetchWords = function (word, name) {
-  Promise.all(word.map((w) => getApi(w)))
+const fetchWords = function (word, title) {
+  Promise.all(word.map((w) => getApi(w, title)))
     .then((values) => {
       const result = new Array();
       values.forEach((e) => {
@@ -157,11 +214,11 @@ const fetchWords = function (word, name) {
     })
     .then((result) => {
       const json = JSON.stringify(result);
-      fs.writeFile(`./src/data/${name}.json`, json);
+      fs.writeFile(`./src/data/${title}.json`, json);
     })
     .then((e) => {
-      if (name) {
-        console.log(`${name} list done.`);
+      if (title) {
+        console.log(`${title} list done.`);
       }
     });
 };
