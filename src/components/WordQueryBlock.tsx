@@ -55,6 +55,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
         style={{
           display: "flex",
           paddingLeft: 34,
+          justifyContent: "center",
         }}
       >
         <a
@@ -71,7 +72,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "flex-end",
-            minWidth: "350px",
+            minWidth: "300px",
           }}
           rel="noreferrer"
         >
@@ -84,14 +85,9 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
         </a>
 
         <List
-          style={{ flexGrow: "1" }}
+          style={{ minWidth: 600 }}
           grid={{
-            xs: 1,
-            sm: 2,
-            md: 2,
-            lg: 3,
-            xl: 4,
-            xxl: 6,
+            column: 2,
           }}
           dataSource={list}
           renderItem={(item: Word) => (
@@ -107,11 +103,16 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
 
         {query.image_results && (
           <List
-            style={{ width: 500 }}
-            grid={{
-              column: 3,
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "flex-end",
             }}
-            dataSource={query.image_results.slice(0, 3)}
+            grid={{
+              column: 5,
+            }}
+            dataSource={query.image_results.slice(0, 5)}
             renderItem={(item: ImageResult) => (
               <List.Item>
                 <div
@@ -122,7 +123,6 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
                   style={{
                     width: 100,
                     height: 100,
-                    // borderRadius: "50%",
                     overflow: "hidden",
                   }}
                 >
