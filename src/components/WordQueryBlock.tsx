@@ -75,7 +75,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
           }}
           rel="noreferrer"
         >
-          <Tooltip placement="bottom" title={info} color={wordColor}>
+          <Tooltip placement="bottomRight" title={info} color={wordColor}>
             <span style={{ textDecoration: "underline" }}>{query.query}</span>
             {query.pron && (
               <span style={{ fontFamily: "Arial" }}>{` [${query.pron}]`}</span>
