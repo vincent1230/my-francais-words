@@ -1,6 +1,6 @@
-import { List, Tooltip } from "antd";
+import { Image, List, Tooltip } from "antd";
 import { ReactElement } from "react";
-import { Word, WordQuery } from "../interfaces";
+import { ImageResult, Word, WordQuery } from "../interfaces";
 import { WordButton } from "./WordButton";
 
 export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
@@ -104,6 +104,53 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
             </List.Item>
           )}
         />
+
+        {query.image_results && (
+          <List
+            style={{ width: 500 }}
+            grid={{
+              column: 3,
+            }}
+            dataSource={query.image_results.slice(0, 3)}
+            renderItem={(item: ImageResult) => (
+              <List.Item>
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open(item.link, "_blank");
+                  }}
+                  style={{
+                    width: 100,
+                    height: 100,
+                    // borderRadius: "50%",
+                    overflow: "hidden",
+                  }}
+                >
+                  <Image
+                    src={item.thumbnailUrl}
+                    width={100}
+                    height={100}
+                    preview={{
+                      visible: false,
+                      mask: (
+                        <div
+                          style={{
+                            width: 100,
+                            height: 100,
+                          }}
+                        />
+                      ),
+                    }}
+                    style={{
+                      objectFit: "cover",
+                      overflow: "hidden",
+                    }}
+                  />
+                </div>
+              </List.Item>
+            )}
+          />
+        )}
       </div>
     </div>
   );
