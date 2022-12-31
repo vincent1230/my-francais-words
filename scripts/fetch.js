@@ -26,6 +26,8 @@ function getCloudscraper(queryWord) {
     url: `https://www.collinsdictionary.com/dictionary/french-english/${encodeURIComponent(
       queryWord.toLowerCase().trim().replaceAll(" ", "-")
     )}`,
+  }).catch((e) => {
+    return {};
   });
 }
 
@@ -126,7 +128,7 @@ function handleResult(queryWord, e) {
 async function imageSearch(result, title) {
   let cacheResult;
   try {
-    cacheResult = require(`../src/data/semaine.json`);
+    cacheResult = require(`../src/data/${title}.json`);
   } catch (e) {
     // console.log(e);
   }
