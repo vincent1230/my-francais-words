@@ -52,6 +52,7 @@ export const WordButton = (props: {
           disabled={!word.url}
           onClick={() => {
             new Audio(word.url).play();
+            navigator.clipboard.writeText(query);
           }}
         >
           {displayedWord}
