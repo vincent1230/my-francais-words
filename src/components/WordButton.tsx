@@ -25,6 +25,25 @@ export const WordButton = (props: {
   const displayedWord =
     word.extra && word.quote && !extraEqual ? word.quote : word.word;
 
+  let coloredWord;
+  if (displayedWord.startsWith("le ")) {
+    coloredWord = (
+      <span>
+        <span style={{ color: "#1677ff" }}>le </span>
+        {displayedWord.replace("le ", "")}
+      </span>
+    );
+  } else if (displayedWord.startsWith("la ")) {
+    coloredWord = (
+      <span>
+        <span style={{ color: "#FF5CA2" }}>la </span>
+        {displayedWord.replace("la ", "")}
+      </span>
+    );
+  } else {
+    coloredWord = <span>{displayedWord}</span>;
+  }
+
   return (
     <div
       style={{
@@ -55,7 +74,7 @@ export const WordButton = (props: {
             navigator.clipboard.writeText(query);
           }}
         >
-          {displayedWord}
+          {coloredWord}
         </Button>
       </ConfigProvider>
     </div>
