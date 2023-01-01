@@ -12,14 +12,22 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
 
   let info: string | null | undefined = "";
   if (query.result) {
-    const posArr = query.result.map((w) => {
-      return w.pos;
+    const infoArr = query.result.filter((w) => {
+      const word = w.word.toLocaleLowerCase();
+      const q = query.query.toLocaleLowerCase();
+      if (
+        word === `le ${q}` ||
+        word === `la ${q}` ||
+        word === `les ${q}` ||
+        word === `l’${q}`
+      ) {
+        return true;
+      }
+      return false;
     });
-    let unique = posArr.filter((c, index) => {
-      return posArr.indexOf(c) === index;
-    });
-    if (unique && unique.length === 1) {
-      info = unique[0];
+
+    if (infoArr && infoArr.length > 0) {
+      info = infoArr[0].pos;
     }
   }
 

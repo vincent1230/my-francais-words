@@ -110,12 +110,27 @@ function handleResult(queryWord, e) {
       } else {
         rightLength = word.length <= 18;
       }
+
+      const posParent =
+        element.parentNode.parentNode.parentNode.parentNode.parentNode;
+      const posMap = posParent
+        .getElementsByTagName("span")
+        .filter((span) => {
+          return span.classNames.includes("pos");
+        })
+        .map((p) => {
+          return p.textContent
+            .replace("[ '", "")
+            .replace("' ]", "")
+            .toLocaleLowerCase();
+        });
+
       if (result.length < 2 || rightLength) {
         result.push({
           url: mp3Url,
           word,
           quote,
-          pos: pos.length > 0 ? pos[0].textContent.toLocaleLowerCase() : null,
+          pos: posMap.length > 0 ? posMap[0] : null,
           extra,
         });
       }
@@ -142,7 +157,7 @@ async function imageSearch(result, title) {
       filterResult[0].image_results
     ) {
       result.image_results = filterResult[0].image_results;
-      console.log(`image cache: ${result.query}`);
+      // console.log(`image cache: ${result.query}`);
       return result;
     }
   }
