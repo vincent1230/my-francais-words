@@ -69,7 +69,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
             alignItems: "center",
             paddingTop: 30,
             paddingBottom: 30,
-            backgroundColor: "rgba(0, 0, 0, 0.05)",
+            backgroundColor: "rgba(0, 0, 0, 0.03)",
           }}
         >
           <div>
