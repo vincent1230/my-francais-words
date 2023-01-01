@@ -74,6 +74,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
         >
           <div>
             <Button
+              tabIndex={-1}
               color="#000"
               style={{ fontWeight: "bold" }}
               onClick={() => {
@@ -83,6 +84,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
               Switch
             </Button>
             <Button
+              tabIndex={-1}
               color="#000"
               style={{ marginLeft: 20, fontWeight: "bold" }}
               onClick={() => {

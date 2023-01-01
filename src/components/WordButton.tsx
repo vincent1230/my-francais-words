@@ -84,6 +84,7 @@ export const WordButton = (props: {
             letterSpacing: 0.1,
             margin: 10,
           }}
+          tabIndex={-1}
           color="#000"
           disabled={!word.url}
           onClick={() => {
