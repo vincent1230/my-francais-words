@@ -83,6 +83,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
         style={{
           display: "flex",
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <a
@@ -117,7 +118,10 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
         </a>
 
         <List
-          style={{ width: 600 }}
+          style={{
+            width: 600,
+            height: "fit-content",
+          }}
           grid={{
             column: 2,
           }}
