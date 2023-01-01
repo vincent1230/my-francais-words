@@ -1,5 +1,5 @@
 import { Button, ConfigProvider, Divider, List } from "antd";
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { WordQuery } from "../interfaces";
 import { WordQueryBlock } from "./WordQueryBlock";
@@ -16,6 +16,40 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   const [randomItem, setRandomItem] = useState<WordQuery | undefined>(
     undefined
   );
+
+  const switchItem = () => {
+    setRandomItem(words[Math.floor(Math.random() * words.length)]);
+    setShowAnswer(false);
+  };
+
+  const switchAnswer = () => {
+    setShowAnswer(!showAnswer);
+  };
+
+  if (showAnswer) {
+    new Audio(randomItem?.result[0].url).play();
+  }
+
+  const handler = (e: KeyboardEvent) => {
+    if (e.code === "ArrowLeft") {
+      e.preventDefault();
+      switchItem();
+    } else if (e.code === "ArrowRight") {
+      e.preventDefault();
+      switchItem();
+    } else if (e.code === "Enter") {
+      e.preventDefault();
+      switchAnswer();
+    } else if (e.code === "Space") {
+      e.preventDefault();
+      switchItem();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handler, false);
+    return () => window.removeEventListener("keydown", handler, false);
+  }, []);
 
   return (
     <div style={{ overflowX: "hidden" }}>
@@ -44,8 +78,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
               color="#000"
               style={{ fontWeight: "bold" }}
               onClick={() => {
-                setRandomItem(words[Math.floor(Math.random() * words.length)]);
-                setShowAnswer(false);
+                switchItem();
               }}
             >
               Switch
@@ -54,7 +87,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
               color="#000"
               style={{ marginLeft: 20, fontWeight: "bold" }}
               onClick={() => {
-                setShowAnswer(!showAnswer);
+                switchAnswer();
               }}
             >
               Answer
