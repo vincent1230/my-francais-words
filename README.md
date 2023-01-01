@@ -1,6 +1,6 @@
 
 
-# A words learning tool for French learners
+# A words learning tool for French learners  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ### Features
 
@@ -28,7 +28,7 @@ so on ...
 ### How to run
 
 1. run `yarn`
-2. apply Google Images search key: https://serper.dev/
+2. apply a google images search key: https://serper.dev/
 3. add .env file, put `SERPER_API_KEY="your_key"` in .env
 4. run `yarn fetch`
 5. run `yarn start`
