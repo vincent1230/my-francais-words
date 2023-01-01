@@ -165,10 +165,10 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
             renderItem={(item: ImageResult) => (
               <List.Item>
                 <div
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.open(item.link, "_blank");
-                  }}
+                  // onClick={(e) => {
+                  //   e.preventDefault();
+                  //   window.open(item.link, "_blank");
+                  // }}
                   style={{
                     width: 100,
                     height: 100,
@@ -180,7 +180,8 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
                     width={100}
                     height={100}
                     preview={{
-                      visible: false,
+                      // visible: false,
+                      src: item.imageUrl,
                       mask: (
                         <div
                           style={{
