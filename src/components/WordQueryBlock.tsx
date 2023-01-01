@@ -19,6 +19,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
         word === `le ${q}` ||
         word === `la ${q}` ||
         word === `les ${q}` ||
+        word === `le/la ${q}` ||
         word === `l’${q}`
       ) {
         return true;
@@ -41,10 +42,15 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
     if (word.extra) {
       return false;
     }
-    if (word.word.startsWith("le") && info?.includes("feminine noun")) {
-      return false;
-    } else if (word.word.startsWith("la") && info?.includes("masculine noun")) {
-      return false;
+    if (!info?.includes("masculine/feminine")) {
+      if (word.word.startsWith("le") && info?.includes("feminine noun")) {
+        return false;
+      } else if (
+        word.word.startsWith("la") &&
+        info?.includes("masculine noun")
+      ) {
+        return false;
+      }
     }
     return true;
   });
@@ -61,7 +67,9 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
 
   // https://antv.vision/zh/docs/specification/language/palette
   let wordColor = "#000";
-  if (info && info.includes("masculine")) {
+  if (info && info.includes("masculine/feminine")) {
+    wordColor = "#8D00A1";
+  } else if (info && info.includes("masculine")) {
     wordColor = "#1677ff";
   } else if (info && info.includes("feminine")) {
     wordColor = "#FF5CA2";

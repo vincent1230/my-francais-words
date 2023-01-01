@@ -18,6 +18,7 @@ export const WordButton = (props: {
     `le ${query}` === word.word ||
     `la ${query}` === word.word ||
     `les ${query}` === word.word ||
+    `le/la ${query}` === word.word ||
     `l’${query}` === word.word
       ? "900"
       : "400";
@@ -45,6 +46,15 @@ export const WordButton = (props: {
       <span>
         <span style={{ color: wordColor }}>l’</span>
         {displayedWord.replace("l’", "")}
+      </span>
+    );
+  } else if (displayedWord.startsWith("le/la")) {
+    coloredWord = (
+      <span>
+        <span style={{ color: "#1677ff" }}>le</span>
+        <span>/</span>
+        <span style={{ color: "#FF5CA2" }}>la</span>
+        {displayedWord.replace("le/la", "")}
       </span>
     );
   } else {
