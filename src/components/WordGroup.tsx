@@ -106,7 +106,9 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
             </div>
           )}
           {showAnswer && randomItem && (
-            <div>{<WordQueryBlock query={randomItem} />}</div>
+            <div style={{ marginTop: 30 }}>
+              {<WordQueryBlock query={randomItem} />}
+            </div>
           )}
         </div>
       </ConfigProvider>
