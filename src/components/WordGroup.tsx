@@ -50,7 +50,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
       console.log(e);
       if (e.code === "ArrowLeft") {
         e.preventDefault();
-        autoSwitch();
+        switchAnswer();
       } else if (e.code === "ArrowRight") {
         e.preventDefault();
         autoSwitch();
@@ -59,7 +59,6 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
         switchAnswer();
       } else if (e.code === "Space") {
         e.preventDefault();
-        // switchItem();
         new Audio(randomItem?.result[0].url).play();
       }
     };
