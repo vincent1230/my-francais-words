@@ -23,33 +23,32 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   };
 
   const switchAnswer = () => {
+    if (!showAnswer) {
+      new Audio(randomItem?.result[0].url).play();
+    }
     setShowAnswer(!showAnswer);
   };
 
-  if (showAnswer) {
-    new Audio(randomItem?.result[0].url).play();
-  }
-
-  const handler = (e: KeyboardEvent) => {
-    if (e.code === "ArrowLeft") {
-      e.preventDefault();
-      switchItem();
-    } else if (e.code === "ArrowRight") {
-      e.preventDefault();
-      switchItem();
-    } else if (e.code === "Enter") {
-      e.preventDefault();
-      switchAnswer();
-    } else if (e.code === "Space") {
-      e.preventDefault();
-      switchItem();
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("keydown", handler, false);
-    return () => window.removeEventListener("keydown", handler, false);
-  }, []);
+    const handler = (e: KeyboardEvent) => {
+      if (e.code === "ArrowLeft") {
+        e.preventDefault();
+        switchItem();
+      } else if (e.code === "ArrowRight") {
+        e.preventDefault();
+        switchItem();
+      } else if (e.code === "Enter") {
+        e.preventDefault();
+        switchAnswer();
+      } else if (e.code === "Space") {
+        e.preventDefault();
+        switchItem();
+      }
+    };
+
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [showAnswer, randomItem, words, switchItem, switchAnswer]);
 
   return (
     <div style={{ overflowX: "hidden" }}>
