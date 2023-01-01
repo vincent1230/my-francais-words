@@ -14,7 +14,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   const h = decodeURIComponent(header);
   return (
     <div style={{ overflowX: "hidden" }}>
-      <h1 style={{ paddingLeft: 58, fontSize: 50 }}>{h}</h1>
+      <h1 style={{ fontSize: 50, textAlign: "center" }}>{h}</h1>
       <Divider style={{ margin: 0 }} />
       <div>
         <List

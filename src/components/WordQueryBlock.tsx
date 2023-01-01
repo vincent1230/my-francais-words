@@ -10,6 +10,19 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
     .toString()
     .toLocaleLowerCase();
 
+  let info: string | null | undefined = "";
+  if (query.result) {
+    const posArr = query.result.map((w) => {
+      return w.pos;
+    });
+    let unique = posArr.filter((c, index) => {
+      return posArr.indexOf(c) === index;
+    });
+    if (unique && unique.length === 1) {
+      info = unique[0];
+    }
+  }
+
   let time = 0;
   let list = query.result.filter((word) => {
     if (word.word.toLocaleLowerCase() === query.query.toLocaleLowerCase()) {
@@ -26,18 +39,12 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
     list = list.slice(0, 6);
   }
 
-  let info: string | null | undefined = "";
-  if (query.result) {
-    const posArr = query.result.map((w) => {
-      return w.pos;
-    });
-    let unique = posArr.filter((c, index) => {
-      return posArr.indexOf(c) === index;
-    });
-    if (unique && unique.length === 1) {
-      info = unique[0];
+  list = list.filter((word, index) => {
+    if (index !== 0 && word.word === list[index - 1].word) {
+      return false;
     }
-  }
+    return true;
+  });
 
   // https://antv.vision/zh/docs/specification/language/palette
   let wordColor = "#000";
