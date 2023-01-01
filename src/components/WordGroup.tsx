@@ -59,7 +59,8 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
         switchAnswer();
       } else if (e.code === "Space") {
         e.preventDefault();
-        switchItem();
+        // switchItem();
+        new Audio(randomItem?.result[0].url).play();
       }
     };
 
