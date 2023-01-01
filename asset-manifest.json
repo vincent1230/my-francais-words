@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/my-francais-words/static/css/main.54d4d2df.css",
-    "main.js": "/my-francais-words/static/js/main.f9f46c1c.js",
+    "main.js": "/my-francais-words/static/js/main.d4aee984.js",
     "static/js/787.ae79111c.chunk.js": "/my-francais-words/static/js/787.ae79111c.chunk.js",
     "static/media/ZillaSlab-Medium.ttf": "/my-francais-words/static/media/ZillaSlab-Medium.d258922dc39ef9544867.ttf",
     "static/media/logo.svg": "/my-francais-words/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/my-francais-words/index.html",
     "main.54d4d2df.css.map": "/my-francais-words/static/css/main.54d4d2df.css.map",
-    "main.f9f46c1c.js.map": "/my-francais-words/static/js/main.f9f46c1c.js.map",
+    "main.d4aee984.js.map": "/my-francais-words/static/js/main.d4aee984.js.map",
     "787.ae79111c.chunk.js.map": "/my-francais-words/static/js/787.ae79111c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.54d4d2df.css",
-    "static/js/main.f9f46c1c.js"
+    "static/js/main.d4aee984.js"
   ]
 }
