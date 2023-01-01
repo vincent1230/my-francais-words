@@ -33,6 +33,11 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
     if (word.extra) {
       return false;
     }
+    if (word.word.startsWith("le") && info?.includes("feminine noun")) {
+      return false;
+    } else if (word.word.startsWith("la") && info?.includes("masculine noun")) {
+      return false;
+    }
     return true;
   });
   if (list.length > 6) {
