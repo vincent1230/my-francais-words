@@ -77,12 +77,16 @@ exports.unit2 = [
   "église",
   "police",
   "centre-ville",
+  "quartier",
+  "ville",
+  "pays",
   "poste",
   "école",
   "quartier",
   "gare",
   "theâtre",
   "jardin",
+  "parc",
   "tour",
 ];
 

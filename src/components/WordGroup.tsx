@@ -1,5 +1,11 @@
 import { Button, ConfigProvider, Divider, List } from "antd";
-import { ReactElement, useCallback, useEffect, useState } from "react";
+import {
+  ReactElement,
+  useCallback,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { useLocation } from "react-router-dom";
 import { WordQuery } from "../interfaces";
 import { WordQueryBlock } from "./WordQueryBlock";
@@ -16,6 +22,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   const [randomItem, setRandomItem] = useState<WordQuery | undefined>(
     undefined
   );
+  const [count, updateCount] = useReducer((x) => x + 1, 0);
 
   const switchItem = useCallback(() => {
     setRandomItem(words[Math.floor(Math.random() * words.length)]);
@@ -29,14 +36,24 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
     setShowAnswer(!showAnswer);
   }, [showAnswer, randomItem]);
 
+  const autoSwitch = useCallback(() => {
+    if (count % 2 === 0) {
+      switchItem();
+    } else {
+      switchAnswer();
+    }
+    updateCount();
+  }, [count, switchItem, switchAnswer]);
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      console.log(e);
       if (e.code === "ArrowLeft") {
         e.preventDefault();
-        switchItem();
+        autoSwitch();
       } else if (e.code === "ArrowRight") {
         e.preventDefault();
-        switchItem();
+        autoSwitch();
       } else if (e.code === "Enter") {
         e.preventDefault();
         switchAnswer();
@@ -48,7 +65,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
 
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [showAnswer, randomItem, words, switchItem, switchAnswer]);
+  }, [showAnswer, randomItem, words, switchItem, switchAnswer, autoSwitch]);
 
   return (
     <div style={{ overflowX: "hidden" }}>
