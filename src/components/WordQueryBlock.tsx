@@ -29,6 +29,17 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
 
     if (infoArr && infoArr.length > 0) {
       info = infoArr[0].pos;
+    } else {
+      const unique = query.result
+        .map((w) => {
+          return w.pos;
+        })
+        .filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        });
+      if (unique && unique.length > 0) {
+        info = unique[0];
+      }
     }
   }
 
@@ -75,6 +86,8 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
     wordColor = "#FF5CA2";
   } else if (info && info.includes("preposition")) {
     wordColor = "#FF6B3B";
+  } else if (info && info.includes("verb")) {
+    wordColor = "#76523B";
   }
 
   return (
