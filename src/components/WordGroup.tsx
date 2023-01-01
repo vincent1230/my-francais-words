@@ -1,5 +1,5 @@
 import { Button, ConfigProvider, Divider, List } from "antd";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { WordQuery } from "../interfaces";
 import { WordQueryBlock } from "./WordQueryBlock";
@@ -17,17 +17,17 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
     undefined
   );
 
-  const switchItem = () => {
+  const switchItem = useCallback(() => {
     setRandomItem(words[Math.floor(Math.random() * words.length)]);
     setShowAnswer(false);
-  };
+  }, [words]);
 
-  const switchAnswer = () => {
+  const switchAnswer = useCallback(() => {
     if (!showAnswer) {
       new Audio(randomItem?.result[0].url).play();
     }
     setShowAnswer(!showAnswer);
-  };
+  }, [showAnswer, randomItem]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
