@@ -97,7 +97,7 @@ exports.unit2 = [
   "historique",
   "avec",
   "monument",
-  "commercante",
+  "commerçant",
   "quais",
   "route",
   "voyez",

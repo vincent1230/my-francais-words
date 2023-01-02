@@ -15,11 +15,11 @@ export const WordButton = (props: {
   const fontWeight =
     extraEqual ||
     query.toLocaleLowerCase() === word.word.toLocaleLowerCase() ||
-    `le ${query}` === word.word ||
-    `la ${query}` === word.word ||
-    `les ${query}` === word.word ||
-    `le/la ${query}` === word.word ||
-    `l’${query}` === word.word
+    `le ${query.toLocaleLowerCase()}` === word.word ||
+    `la ${query.toLocaleLowerCase()}` === word.word ||
+    `les ${query.toLocaleLowerCase()}` === word.word ||
+    `le/la ${query.toLocaleLowerCase()}` === word.word ||
+    `l’${query.toLocaleLowerCase()}` === word.word
       ? "900"
       : "400";
 
