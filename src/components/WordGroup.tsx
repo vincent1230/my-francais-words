@@ -89,14 +89,23 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
     };
   }, [pressingKey]);
 
-  let hrefPath = `https://www.collinsdictionary.com/dictionary/french-english/`;
-  if (pressingKey === "z" || pressingKey === "Meta") {
-    hrefPath = `https://www.larousse.fr/dictionnaires/francais-chinois/`;
-  } else if (pressingKey === "x") {
-    hrefPath = `https://www.larousse.fr/conjugaison/francais/`;
-  } else if (pressingKey === "c") {
-    hrefPath = `https://www.frdic.com/dicts/fr/`;
-  }
+  const [hrefPath, setHrefPath] = useState(
+    `https://www.collinsdictionary.com/dictionary/french-english/`
+  );
+
+  useEffect(() => {
+    if (pressingKey === "z" || pressingKey === "Meta") {
+      setHrefPath(`https://www.larousse.fr/dictionnaires/francais-chinois/`);
+    } else if (pressingKey === "x") {
+      setHrefPath(`https://www.larousse.fr/conjugaison/francais/`);
+    } else if (pressingKey === "c") {
+      setHrefPath(`https://www.frdic.com/dicts/fr/`);
+    } else {
+      setHrefPath(
+        `https://www.collinsdictionary.com/dictionary/french-english/`
+      );
+    }
+  }, [pressingKey]);
 
   return (
     <div style={{ overflowX: "hidden" }}>
