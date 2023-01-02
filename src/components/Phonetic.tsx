@@ -11,7 +11,14 @@ export const Phonetic = (): ReactElement => {
           paddingTop: 24,
         }}
       >
-        Phonétique
+        <a
+          href="https://www.masteryourfrench.com/french-pronunciation/phonetic-alphabet/#pronounce-french-vowels"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#000" }}
+        >
+          Phonétique
+        </a>
       </h1>
 
       <List
@@ -41,6 +48,9 @@ export const Phonetic = (): ReactElement => {
                   >
                     <Button
                       onClick={() => {
+                        navigator.clipboard.writeText(
+                          item.content.replaceAll("/", "")
+                        );
                         new Audio(item.href).play();
                       }}
                       style={{
@@ -68,6 +78,10 @@ export const Phonetic = (): ReactElement => {
 const data = [
   [
     {
+      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/a-sound.m4a",
+      content: "/a/",
+    },
+    {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/i-sound.m4a",
       content: "/i/",
     },
@@ -78,10 +92,6 @@ const data = [
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/È-sound.m4a",
       content: "/ɛ/",
-    },
-    {
-      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/a-sound.m4a",
-      content: "/a/",
     },
   ],
   [
@@ -118,16 +128,16 @@ const data = [
   ],
   [
     {
+      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/an-sound.m4a",
+      content: "/ɑ̃/",
+    },
+    {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/in-sound.m4a",
       content: "/ɛ̃/",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/on-sound.m4a",
       content: "/ɔ̃/",
-    },
-    {
-      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/an-sound.m4a",
-      content: "/ɑ̃/",
     },
   ],
   [
@@ -136,12 +146,12 @@ const data = [
       content: "/j/",
     },
     {
-      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/w-sound.m4a",
-      content: "/w/",
-    },
-    {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/ue-sound.m4a",
       content: "/ɥ/",
+    },
+    {
+      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/w-sound.m4a",
+      content: "/w/",
     },
   ],
   [
@@ -162,14 +172,6 @@ const data = [
       content: "/d/",
     },
     {
-      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/f-sound.m4a",
-      content: "/f/",
-    },
-    {
-      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/v-sound.m4a",
-      content: "/v/",
-    },
-    {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/k-sound.m4a",
       content: "/k/",
     },
@@ -177,6 +179,15 @@ const data = [
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/g-sound.m4a",
       content: "/g/",
     },
+    {
+      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/f-sound.m4a",
+      content: "/f/",
+    },
+    {
+      href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/v-sound.m4a",
+      content: "/v/",
+    },
+
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/s-sound.m4a",
       content: "/s/",
