@@ -1,13 +1,13 @@
 export interface Word {
   word: string;
   url: any;
-  extra?: string | undefined;
-  quote?: string | undefined;
-  pos?: string | undefined | null;
+  pos: string;
+  extra?: string;
+  quote?: string;
 }
 
 export interface WordQuery {
-  pron?: string | null;
+  pron: string | null;
   image_results: ImageResult[];
   query: string;
   result: Word[];
