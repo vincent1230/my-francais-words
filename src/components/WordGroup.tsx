@@ -10,6 +10,11 @@ import { useLocation } from "react-router-dom";
 import { WordQuery } from "../interfaces";
 import { WordQueryBlock } from "./WordQueryBlock";
 
+function playWord(item: WordQuery | undefined | null) {
+  if (item?.result && item?.result.length > 0 && item?.result[0].url) {
+    new Audio(item?.result[0].url).play();
+  }
+}
 export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   const { words } = props;
   const location = useLocation();
@@ -31,7 +36,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
 
   const switchAnswer = useCallback(() => {
     if (!showAnswer) {
-      new Audio(randomItem?.result[0].url).play();
+      playWord(randomItem);
     }
     setShowAnswer(!showAnswer);
   }, [showAnswer, randomItem]);
@@ -59,7 +64,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
         switchAnswer();
       } else if (e.code === "Space") {
         e.preventDefault();
-        new Audio(randomItem?.result[0].url).play();
+        playWord(randomItem);
       }
     };
 
