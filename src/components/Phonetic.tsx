@@ -47,6 +47,7 @@ export const Phonetic = (): ReactElement => {
                     }}
                   >
                     <Button
+                      tabIndex={-1}
                       onClick={() => {
                         navigator.clipboard.writeText(
                           item.content.replaceAll("/", "")
