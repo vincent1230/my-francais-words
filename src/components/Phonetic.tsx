@@ -207,7 +207,7 @@ const data = [
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/r-sound.m4a",
-      content: "/ʁ/",
+      content: "/ʀ/",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/l-sound.m4a",
