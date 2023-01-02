@@ -23,6 +23,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   const header = path.charAt(0).toUpperCase() + path.slice(1);
   const h = decodeURIComponent(header);
 
+  const [pressingKey, setPressingKey] = useState<string | undefined>(undefined);
   const [showAnswer, setShowAnswer] = useState(false);
   const [randomItem, setRandomItem] = useState<WordQuery | undefined>(
     undefined
@@ -70,6 +71,30 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [showAnswer, randomItem, words, switchItem, switchAnswer, autoSwitch]);
+
+  useEffect(() => {
+    const handlerUp = (e: KeyboardEvent) => {
+      setPressingKey(undefined);
+    };
+
+    const handlerDown = (e: KeyboardEvent) => {
+      setPressingKey(e.key);
+    };
+
+    window.addEventListener("keydown", handlerDown);
+    window.addEventListener("keyup", handlerUp);
+    return () => {
+      window.removeEventListener("keydown", handlerDown);
+      window.removeEventListener("keyup", handlerUp);
+    };
+  }, [pressingKey]);
+
+  let hrefPath = `https://www.collinsdictionary.com/dictionary/french-english/`;
+  if (pressingKey === "z" || pressingKey === "Meta") {
+    hrefPath = `https://www.larousse.fr/dictionnaires/francais-chinois/`;
+  } else if (pressingKey === "x") {
+    hrefPath = `https://www.larousse.fr/conjugaison/francais/`;
+  }
 
   return (
     <div style={{ overflowX: "hidden" }}>
@@ -128,7 +153,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
           )}
           {showAnswer && randomItem && (
             <div style={{ marginTop: 30 }}>
-              {<WordQueryBlock query={randomItem} />}
+              {<WordQueryBlock query={randomItem} hrefPath={hrefPath} />}
             </div>
           )}
         </div>
@@ -140,7 +165,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
         dataSource={words}
         renderItem={(item: WordQuery) => (
           <List.Item>
-            <WordQueryBlock query={item} />
+            <WordQueryBlock query={item} hrefPath={hrefPath} />
           </List.Item>
         )}
       />

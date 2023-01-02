@@ -3,8 +3,11 @@ import { ReactElement } from "react";
 import { ImageResult, Word, WordQuery } from "../interfaces";
 import { WordButton } from "./WordButton";
 
-export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
-  const { query } = props;
+export const WordQueryBlock = (props: {
+  query: WordQuery;
+  hrefPath: string;
+}): ReactElement => {
+  const { query, hrefPath } = props;
 
   const redirectUrlQuery = encodeURIComponent(query.query)
     .toString()
@@ -100,7 +103,7 @@ export const WordQueryBlock = (props: { query: WordQuery }): ReactElement => {
         }}
       >
         <a
-          href={`https://www.collinsdictionary.com/dictionary/french-english/${redirectUrlQuery}`}
+          href={`${hrefPath}${redirectUrlQuery}`}
           target="_blank"
           style={{
             fontSize: 25,
