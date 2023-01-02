@@ -52,7 +52,6 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      console.log(e);
       if (e.code === "ArrowLeft") {
         e.preventDefault();
         switchAnswer();
