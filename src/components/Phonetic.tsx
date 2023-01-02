@@ -56,7 +56,7 @@ export const Phonetic = (): ReactElement => {
                       }}
                       style={{
                         width: 80,
-                        height: 45,
+                        height: 43,
                         margin: 10,
                         fontFamily: "Georgia, Times, serif",
                         fontSize: 23,
