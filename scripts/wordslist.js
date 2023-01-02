@@ -83,6 +83,7 @@ exports.unit2 = [
   "poste",
   "école",
   "gare",
+  "grand",
   "théâtre",
   "jardin",
   "parc",
