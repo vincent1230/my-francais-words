@@ -94,6 +94,7 @@ exports.unit2 = [
   "pour",
   "visite",
   "ici",
+  "dans",
   "historique",
   "avec",
   "monument",

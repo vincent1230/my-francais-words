@@ -94,6 +94,8 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
     hrefPath = `https://www.larousse.fr/dictionnaires/francais-chinois/`;
   } else if (pressingKey === "x") {
     hrefPath = `https://www.larousse.fr/conjugaison/francais/`;
+  } else if (pressingKey === "c") {
+    hrefPath = `https://www.frdic.com/dicts/fr/`;
   }
 
   return (

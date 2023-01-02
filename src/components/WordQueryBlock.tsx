@@ -87,10 +87,14 @@ export const WordQueryBlock = (props: {
     wordColor = "#1677ff";
   } else if (info && info.includes("feminine")) {
     wordColor = "#FF5CA2";
-  } else if (info && info.includes("preposition")) {
+  } else if (info && info === "preposition") {
     wordColor = "#FF6B3B";
-  } else if (info && info.includes("verb")) {
+  } else if (info && info === "verb") {
     wordColor = "#76523B";
+  } else if (info && info === "adverb") {
+    wordColor = "#B40F0F";
+  } else if (info && info === "adjective") {
+    wordColor = "#006F45";
   }
 
   return (
