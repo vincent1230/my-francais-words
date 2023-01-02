@@ -55,7 +55,7 @@ export const RandomNum = (): ReactElement => {
       <div
         style={{
           marginTop: 24,
-          fontSize: "10vw",
+          fontSize: 200,
           display: "flex",
           fontFamily: "Helvetica, arial, sans-serif, PingFang SC",
           justifyContent: "center",
