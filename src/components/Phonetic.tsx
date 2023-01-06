@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, List } from "antd";
+import { Button, ConfigProvider, List, Tooltip } from "antd";
 import { ReactElement } from "react";
 
 export const Phonetic = (): ReactElement => {
@@ -46,25 +46,27 @@ export const Phonetic = (): ReactElement => {
                       },
                     }}
                   >
-                    <Button
-                      tabIndex={-1}
-                      onClick={() => {
-                        navigator.clipboard.writeText(
-                          item.content.replaceAll("/", "")
-                        );
-                        new Audio(item.href).play();
-                      }}
-                      style={{
-                        width: 80,
-                        height: 43,
-                        margin: 10,
-                        fontFamily: "Georgia, Times, serif",
-                        fontSize: 23,
-                        fontWeight: "600",
-                      }}
-                    >
-                      {item.content}
-                    </Button>
+                    <Tooltip placement="bottom" title={item.extra}>
+                      <Button
+                        tabIndex={-1}
+                        onClick={() => {
+                          navigator.clipboard.writeText(
+                            item.content.replaceAll("/", "")
+                          );
+                          new Audio(item.href).play();
+                        }}
+                        style={{
+                          width: 80,
+                          height: 43,
+                          margin: 10,
+                          fontFamily: "Georgia, Times, serif",
+                          fontSize: 23,
+                          fontWeight: "600",
+                        }}
+                      >
+                        {item.content}
+                      </Button>
+                    </Tooltip>
                   </ConfigProvider>
                 </List.Item>
               )}
@@ -99,6 +101,7 @@ const data = [
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/u-sound.m4a",
       content: "/u/",
+      extra: "乌",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/o-sound.m4a",
@@ -113,6 +116,7 @@ const data = [
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/y-sound.m4a",
       content: "/y/",
+      extra: "鱼",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/eu-sound.m4a",
@@ -131,14 +135,17 @@ const data = [
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/an-sound.m4a",
       content: "/ɑ̃/",
+      extra: "昂 + 鼻",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/in-sound.m4a",
       content: "/ɛ̃/",
+      extra: "安 + 鼻",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/on-sound.m4a",
       content: "/ɔ̃/",
+      extra: "喔 + 鼻",
     },
   ],
   [
