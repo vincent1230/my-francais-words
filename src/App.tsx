@@ -13,8 +13,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Phonetic />} />
-      <Route path="/phonetic" element={<Phonetic />} />
-      <Route path="/num" element={<RandomNum />} />
+      <Route path="phonetic" element={<Phonetic />} />
+      <Route path="num" element={<RandomNum />} />
       <Route path="nationalité" element={<WordGroup words={nationalite} />} />
       <Route path="semaine" element={<WordGroup words={semaine} />} />
       <Route path="professions" element={<WordGroup words={professions} />} />
