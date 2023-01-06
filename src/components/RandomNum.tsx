@@ -110,7 +110,7 @@ export const EcoutezRandomNum = (): ReactElement => {
   const [num, setNum] = useState(0);
   const [interval, setInterval] = useState(10);
   const [status, setStatus] = useState<string | undefined>(undefined);
-  const [inputNum, setInputNum] = useState(0);
+  const [inputNum, setInputNum] = useState<number | undefined>(undefined);
   const [correctNum, setCorrectNum] = useState<number | undefined>(undefined);
 
   let color;
@@ -136,6 +136,7 @@ export const EcoutezRandomNum = (): ReactElement => {
       } else if (e.code === "Escape") {
         setStatus(undefined);
         setCorrectNum(undefined);
+        setInputNum(undefined);
       }
     };
 
@@ -200,10 +201,16 @@ export const EcoutezRandomNum = (): ReactElement => {
             textAlign: "center",
             color: color,
           }}
+          value={inputNum}
           onChange={(e) => {
             setStatus(undefined);
             setCorrectNum(undefined);
-            setInputNum(parseInt(e.target.value.trim()));
+            const value = parseInt(e.target.value.trim());
+            if (value) {
+              setInputNum(value);
+            } else {
+              setInputNum(undefined);
+            }
           }}
         />
       </div>
