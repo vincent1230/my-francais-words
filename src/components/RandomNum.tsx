@@ -65,6 +65,20 @@ export const LireRandomNum = (): ReactElement => {
     },
   });
 
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      console.log(e);
+      if (e.code === "Enter") {
+        new Audio(
+          `https://frenchtogether.com/wp-content/uploads/2018/03/${num}.mp3`
+        ).play();
+      }
+    };
+
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [num]);
+
   return (
     <div style={{ overflowX: "hidden" }}>
       <div
@@ -104,10 +118,8 @@ export const LireRandomNum = (): ReactElement => {
   );
 };
 
-let audio = new Audio();
-
 export const EcoutezRandomNum = (): ReactElement => {
-  const [num, setNum] = useState(0);
+  const [num, setNum] = useState<number | undefined>(undefined);
   const [interval, setInterval] = useState(10);
   const [status, setStatus] = useState<string | undefined>(undefined);
   const [inputNum, setInputNum] = useState<number | undefined>(undefined);
@@ -149,14 +161,13 @@ export const EcoutezRandomNum = (): ReactElement => {
     autostart: true,
     interval: interval * 1000,
     onTimeUpdate: () => {
-      setNum(Math.round(Math.random() * 100));
+      const changed = Math.round(Math.random() * 100);
+      setNum(changed);
+      new Audio(
+        `https://frenchtogether.com/wp-content/uploads/2018/03/${changed}.mp3`
+      ).play();
     },
   });
-
-  useEffect(() => {
-    audio.src = `https://frenchtogether.com/wp-content/uploads/2018/03/${num}.mp3`;
-    audio.play();
-  }, [num]);
 
   return (
     <div style={{ overflowX: "hidden" }}>
