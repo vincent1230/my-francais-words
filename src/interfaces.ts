@@ -1,7 +1,7 @@
 export interface Word {
   word: string;
   url: any;
-  pos: string;
+  pos?: string | null;
   extra?: string;
   quote?: string;
 }
