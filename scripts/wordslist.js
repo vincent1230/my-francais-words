@@ -215,7 +215,6 @@ exports.unit2 = [
   "avec",
   "monument",
   "commerçant",
-  "quais",
   "route",
   "voyez",
   "gauche",
@@ -225,7 +224,6 @@ exports.unit2 = [
   "merci",
   "alors",
   "continue",
-  "cathédrale",
   "magnifique",
   "quoi",
   "contemporain",
@@ -235,4 +233,6 @@ exports.unit2 = [
   "lieu",
   "endroit",
   "aujourd’hui",
+  "demain",
+  "hier",
 ];

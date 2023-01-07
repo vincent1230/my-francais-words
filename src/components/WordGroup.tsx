@@ -8,6 +8,7 @@ import {
 } from "react";
 import { useLocation } from "react-router-dom";
 import { WordQuery } from "../interfaces";
+import { getRandomInt } from "./utils";
 import { WordQueryBlock } from "./WordQueryBlock";
 
 function playWord(item: WordQuery | undefined | null) {
@@ -31,7 +32,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   const [count, updateCount] = useReducer((x) => x + 1, 0);
 
   const switchItem = useCallback(() => {
-    setRandomItem(words[Math.floor(Math.random() * words.length)]);
+    setRandomItem(words[getRandomInt(0, words.length - 1)]);
     setShowAnswer(false);
   }, [words]);
 

@@ -3,12 +3,36 @@ import { ReactElement, useEffect, useState } from "react";
 import { useTimer } from "use-timer";
 import { getRandomInt } from "./utils";
 
-// const mainNum = [
-//   0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30,
-//   40, 50, 60, 70, 80, 90, 100,
-// ];
+const alphabet = [
+  "A a",
+  "B b",
+  "C c",
+  "D d",
+  "E e",
+  "F f",
+  "G g",
+  "H h",
+  "I i",
+  "J j",
+  "K k",
+  "L l",
+  "M m",
+  "N n",
+  "O o",
+  "P p",
+  "Q q",
+  "R r",
+  "S s",
+  "T t",
+  "U u",
+  "V v",
+  "W w",
+  "X x",
+  "Y y",
+  "Z z",
+];
 
-export const RandomNum = (): ReactElement => {
+export const RandomAlphabet = (): ReactElement => {
   const [isLire, setIsLire] = useState(false);
 
   return (
@@ -20,7 +44,7 @@ export const RandomNum = (): ReactElement => {
           color: "#303030",
         }}
       >
-        Nombre (1-100)
+        L’alphabet
       </h1>
       <div
         style={{
@@ -48,36 +72,34 @@ export const RandomNum = (): ReactElement => {
           Ecoutez
         </Button>
       </div>
-      {isLire ? <LireRandomNum /> : <EcoutezRandomNum />}
+      {isLire ? <LireRandomAlphabet /> : <EcoutezRandomAlphabet />}
     </div>
   );
 };
 
-export const LireRandomNum = (): ReactElement => {
-  const [num, setNum] = useState(0);
-  const [interval, setInterval] = useState(5);
+export const LireRandomAlphabet = (): ReactElement => {
+  const [abc, setAbc] = useState("");
+  const [interval, setInterval] = useState(3);
 
   useTimer({
     initialTime: 0,
     autostart: true,
     interval: interval * 1000,
     onTimeUpdate: () => {
-      setNum(getRandomInt(0, 100));
+      setAbc(alphabet[getRandomInt(0, 25)]);
     },
   });
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.code === "Enter") {
-        new Audio(
-          `https://frenchtogether.com/wp-content/uploads/2018/03/${num}.mp3`
-        ).play();
+        new Audio(sounds[abc.slice(-1).toUpperCase() as AlphabetType]).play();
       }
     };
 
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [num]);
+  }, [abc]);
 
   return (
     <div style={{ overflowX: "hidden" }}>
@@ -112,18 +134,18 @@ export const LireRandomNum = (): ReactElement => {
           color: "#1B9CD0",
         }}
       >
-        {num}
+        {abc}
       </div>
     </div>
   );
 };
 
-export const EcoutezRandomNum = (): ReactElement => {
-  const [num, setNum] = useState<number | undefined>(undefined);
-  const [interval, setInterval] = useState(10);
+export const EcoutezRandomAlphabet = (): ReactElement => {
+  const [abc, setAbc] = useState<string | undefined>(undefined);
+  const [interval, setInterval] = useState(5);
   const [status, setStatus] = useState<string | undefined>(undefined);
-  const [inputNum, setInputNum] = useState<number | undefined>(undefined);
-  const [correctNum, setCorrectNum] = useState<number | undefined>(undefined);
+  const [inputAbc, setInputAbc] = useState<string | undefined>(undefined);
+  const [correctAbc, setCorrectAbc] = useState<string | undefined>(undefined);
 
   let color;
   if (status === undefined) {
@@ -136,36 +158,35 @@ export const EcoutezRandomNum = (): ReactElement => {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      console.log(e);
       if (e.code === "Enter") {
         e.preventDefault();
-        if (inputNum === num) {
+        if (
+          inputAbc?.toLocaleLowerCase() === abc?.slice(-1).toLocaleLowerCase()
+        ) {
           setStatus("right");
         } else {
           setStatus("wrong");
         }
-        setCorrectNum(num);
+        setCorrectAbc(abc);
       } else if (e.code === "Escape") {
         setStatus(undefined);
-        setCorrectNum(undefined);
-        setInputNum(undefined);
+        setCorrectAbc(undefined);
+        setInputAbc(undefined);
       }
     };
 
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [inputNum, num]);
+  }, [inputAbc, abc]);
 
   useTimer({
     initialTime: 0,
     autostart: true,
     interval: interval * 1000,
     onTimeUpdate: () => {
-      const changed = getRandomInt(0, 100);
-      setNum(changed);
-      new Audio(
-        `https://frenchtogether.com/wp-content/uploads/2018/03/${changed}.mp3`
-      ).play();
+      const changed = alphabet[getRandomInt(0, 25)];
+      setAbc(changed);
+      new Audio(sounds[changed.slice(-1).toUpperCase() as AlphabetType]).play();
     },
   });
 
@@ -212,15 +233,15 @@ export const EcoutezRandomNum = (): ReactElement => {
             textAlign: "center",
             color: color,
           }}
-          value={inputNum}
+          value={inputAbc}
           onChange={(e) => {
             setStatus(undefined);
-            setCorrectNum(undefined);
-            const value = parseInt(e.target.value.trim());
+            setCorrectAbc(undefined);
+            const value = e.target.value.trim();
             if (value) {
-              setInputNum(value);
+              setInputAbc(value);
             } else {
-              setInputNum(undefined);
+              setInputAbc(undefined);
             }
           }}
         />
@@ -238,8 +259,64 @@ export const EcoutezRandomNum = (): ReactElement => {
           color: "#16a37e",
         }}
       >
-        {correctNum}
+        {correctAbc}
       </div>
     </div>
   );
+};
+
+type AlphabetType =
+  | "A"
+  | "B"
+  | "C"
+  | "D"
+  | "E"
+  | "F"
+  | "G"
+  | "H"
+  | "I"
+  | "J"
+  | "K"
+  | "L"
+  | "M"
+  | "N"
+  | "O"
+  | "P"
+  | "Q"
+  | "R"
+  | "S"
+  | "T"
+  | "U"
+  | "V"
+  | "W"
+  | "X"
+  | "Y"
+  | "Z";
+const sounds = {
+  A: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_a.mp3",
+  B: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_b.mp3",
+  C: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_c.mp3",
+  D: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_d.mp3",
+  E: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_e.mp3",
+  F: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_f.mp3",
+  G: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_g.mp3",
+  H: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_h.mp3",
+  I: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_i.mp3",
+  J: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_git.mp3",
+  K: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_cas.mp3",
+  L: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_aile.mp3",
+  M: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_m.mp3",
+  N: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_aine.mp3",
+  O: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_au.mp3",
+  P: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_p.mp3",
+  Q: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_cul.mp3",
+  R: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_air.mp3",
+  S: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_ace.mp3",
+  T: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_t.mp3",
+  U: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_eu.mp3",
+  V: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_v.mp3",
+  W: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_w.mp3",
+  X: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_x.mp3",
+  Y: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_y.mp3",
+  Z: "https://www.collinsdictionary.com/sounds/hwd_sounds/fr_z.mp3",
 };
