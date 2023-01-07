@@ -90,11 +90,13 @@ export const WordQueryBlock = (props: {
   } else if (info && info === "preposition") {
     wordColor = "#FF6B3B";
   } else if (info && info === "verb") {
-    wordColor = "#76523B";
+    wordColor = "#000";
   } else if (info && info === "adverb") {
     wordColor = "#B40F0F";
   } else if (info && info === "adjective") {
     wordColor = "#006F45";
+  } else {
+    wordColor = "#4C6080";
   }
 
   return (
