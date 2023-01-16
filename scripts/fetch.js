@@ -197,34 +197,65 @@ async function imageSearch(result, title) {
     });
 }
 
-async function getApi(queryWord, title) {
-  return getCloudscraper(queryWord)
-    .then((e) => {
-      return handleResult(queryWord, e);
-    })
-    .catch((e) => {
-      if (e && !e.toString().includes("403")) {
-        console.log(e);
-      }
+function alreadyExistedResult(queryWord, title) {
+  let cacheResult;
+  try {
+    cacheResult = require(`../src/data/${title}.json`);
+  } catch (e) {
+    // console.log(e);
+  }
 
-      const root = HTMLParser.parse(e);
-      const action = root
-        .getElementsByTagName("form")[0]
-        .getAttribute("action");
-      const newPath = action.replaceAll('\\"', "").split("?")[0];
-      const newUrl = `https://www.collinsdictionary.com${newPath}`;
-      if (newPath === "/spellcheck/french-english") {
-        return { query: queryWord, result: null };
-      }
-      return getCloudscraperByUrl(newUrl).then((e) => {
-        return handleResult(queryWord, e);
-      });
-    })
-    .then((result) => imageSearch(result, title));
+  if (cacheResult) {
+    const filterResult = cacheResult.filter((e) => {
+      return e.query == queryWord;
+    });
+    if (
+      filterResult &&
+      filterResult.length > 0 &&
+      filterResult[0].result &&
+      filterResult[0].result.length > 0
+    ) {
+      return filterResult[0];
+    }
+  }
+
+  return undefined;
 }
 
-const fetchWords = function (word, title) {
-  Promise.all(word.map((w) => getApi(w, title)))
+async function getApi(queryWord, title, refetch) {
+  const oldResult = alreadyExistedResult(queryWord, title);
+  if (oldResult && !refetch) {
+    console.log(`Collins oldReuslt: ${queryWord}`);
+    return imageSearch(oldResult, title);
+  } else {
+    return getCloudscraper(queryWord)
+      .then((e) => {
+        return handleResult(queryWord, e);
+      })
+      .catch((e) => {
+        if (e && !e.toString().includes("403")) {
+          console.log(e);
+        }
+
+        const root = HTMLParser.parse(e);
+        const action = root
+          .getElementsByTagName("form")[0]
+          .getAttribute("action");
+        const newPath = action.replaceAll('\\"', "").split("?")[0];
+        const newUrl = `https://www.collinsdictionary.com${newPath}`;
+        if (newPath === "/spellcheck/french-english") {
+          return { query: queryWord, result: null };
+        }
+        return getCloudscraperByUrl(newUrl).then((e) => {
+          return handleResult(queryWord, e);
+        });
+      })
+      .then((result) => imageSearch(result, title));
+  }
+}
+
+const fetchWords = function (word, title, refetch) {
+  Promise.all(word.map((w) => getApi(w, title, refetch)))
     .then((values) => {
       const result = new Array();
       values.forEach((e) => {
@@ -243,7 +274,7 @@ const fetchWords = function (word, title) {
     });
 };
 
-fetchWords(require("./wordslist.js").nationalite, "nationalite");
-fetchWords(require("./wordslist.js").semaine, "semaine");
-fetchWords(require("./wordslist.js").unit1, "unit1");
-fetchWords(require("./wordslist.js").unit2, "unit2");
+fetchWords(require("./wordslist.js").nationalite, "nationalite", false);
+fetchWords(require("./wordslist.js").semaine, "semaine", false);
+fetchWords(require("./wordslist.js").unit1, "unit1", false);
+fetchWords(require("./wordslist.js").unit2, "unit2", false);
