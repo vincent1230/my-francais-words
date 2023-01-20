@@ -9,6 +9,7 @@ import professions from "./data/professions.json";
 import semaine from "./data/semaine.json";
 import unit1 from "./data/unit1.json";
 import unit2 from "./data/unit2.json";
+import verbs from "./data/verbs.json";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="phonetic" element={<Phonetic />} />
       <Route path="num" element={<RandomNum />} />
       <Route path="alphabet" element={<RandomAlphabet />} />
+      <Route path="verbs" element={<WordGroup words={verbs} />} />
       <Route path="nationalité" element={<WordGroup words={nationalite} />} />
       <Route path="semaine" element={<WordGroup words={semaine} />} />
       <Route path="professions" element={<WordGroup words={professions} />} />
