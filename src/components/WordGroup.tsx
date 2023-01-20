@@ -75,10 +75,12 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
 
   useEffect(() => {
     const handlerUp = (e: KeyboardEvent) => {
+      console.log("handlerUp");
       setPressingKey(undefined);
     };
 
     const handlerDown = (e: KeyboardEvent) => {
+      console.log(e);
       setPressingKey(e.key);
     };
 
@@ -98,7 +100,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
     if (pressingKey === "z" || pressingKey === "Meta") {
       setHrefPath(`https://www.larousse.fr/dictionnaires/francais-chinois/`);
     } else if (pressingKey === "x") {
-      setHrefPath(`https://www.larousse.fr/conjugaison/francais/`);
+      setHrefPath(`https://www.collinsdictionary.com/conjugation/french/`);
     } else if (pressingKey === "c") {
       setHrefPath(`https://www.frdic.com/dicts/fr/`);
     } else {

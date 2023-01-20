@@ -10,7 +10,9 @@ export const WordQueryBlock = (props: {
 }): ReactElement => {
   const { query, hrefPath } = props;
 
-  const redirectUrlQuery = encodeURIComponent(query.query)
+  const redirectUrlQuery = encodeURIComponent(
+    query.query.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+  )
     .toString()
     .toLocaleLowerCase();
 
