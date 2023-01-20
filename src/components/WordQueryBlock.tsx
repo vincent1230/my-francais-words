@@ -1,6 +1,7 @@
 import { Image, List, Tooltip } from "antd";
 import { ReactElement } from "react";
 import { ImageResult, Word, WordQuery } from "../interfaces";
+import extraExplain from "./extra_explain.json";
 import { WordButton } from "./WordButton";
 
 export const WordQueryBlock = (props: {
@@ -99,6 +100,8 @@ export const WordQueryBlock = (props: {
     wordColor = "#4C6080";
   }
 
+  const extra = extraExplain[query.query as keyof typeof extraExplain];
+
   return (
     <div style={{ width: "100vw" }}>
       <div
@@ -129,11 +132,18 @@ export const WordQueryBlock = (props: {
         >
           <Tooltip placement="bottomRight" title={info} color={wordColor}>
             <span style={{ textAlign: "right" }}>
-              <span style={{ textDecoration: "underline" }}>{query.query}</span>
-              {query.pron && (
-                <span
-                  style={{ fontFamily: "Arial" }}
-                >{` [${query.pron}]`}</span>
+              <div>
+                <span style={{ textDecoration: "underline" }}>
+                  {query.query}
+                </span>
+                {query.pron && (
+                  <span
+                    style={{ fontFamily: "Arial" }}
+                  >{` [${query.pron}]`}</span>
+                )}
+              </div>
+              {extra && (
+                <div style={{ opacity: 0.7, marginTop: 8 }}>({extra})</div>
               )}
             </span>
           </Tooltip>
