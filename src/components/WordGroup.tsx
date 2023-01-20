@@ -16,6 +16,7 @@ function playWord(item: WordQuery | undefined | null) {
     new Audio(item?.result[0].url).play();
   }
 }
+
 export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   const { words } = props;
   const location = useLocation();
