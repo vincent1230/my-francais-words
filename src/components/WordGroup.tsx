@@ -75,10 +75,10 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   }, [showAnswer, randomItem, words, switchItem, switchAnswer, autoSwitch]);
 
   useEffect(() => {
-    const handlerUp = (e: KeyboardEvent) => {
-      console.log("handlerUp");
-      setPressingKey(undefined);
-    };
+    // const handlerUp = (e: KeyboardEvent) => {
+    //   console.log("handlerUp");
+    //   setPressingKey(undefined);
+    // };
 
     const handlerDown = (e: KeyboardEvent) => {
       console.log(e);
@@ -86,10 +86,10 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
     };
 
     window.addEventListener("keydown", handlerDown);
-    window.addEventListener("keyup", handlerUp);
+    // window.addEventListener("keyup", handlerUp);
     return () => {
       window.removeEventListener("keydown", handlerDown);
-      window.removeEventListener("keyup", handlerUp);
+      // window.removeEventListener("keyup", handlerUp);
     };
   }, [pressingKey]);
 
