@@ -10,6 +10,7 @@ import semaine from "./data/semaine.json";
 import tourbillon from "./data/tourbillon.json";
 import unit1 from "./data/unit1.json";
 import unit2 from "./data/unit2.json";
+import unit3 from "./data/unit3.json";
 import verbs from "./data/verbs.json";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Route path="tourbillon" element={<WordGroup words={tourbillon} />} />
       <Route path="unité-1" element={<WordGroup words={unit1} />} />
       <Route path="unité-2" element={<WordGroup words={unit2} />} />
+      <Route path="unité-3" element={<WordGroup words={unit3} />} />
     </Routes>
   );
 }

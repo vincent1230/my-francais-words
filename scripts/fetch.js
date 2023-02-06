@@ -278,6 +278,7 @@ fetchWords(require("./wordslist.js").verbs, "verbs", false);
 fetchWords(require("./wordslist.js").nationalite, "nationalite", false);
 fetchWords(require("./wordslist.js").semaine, "semaine", false);
 fetchWords(require("./wordslist.js").professions, "professions", false);
+fetchWords(require("./wordslist.js").tourbillon, "tourbillon", false);
 fetchWords(require("./wordslist.js").unit1, "unit1", false);
 fetchWords(require("./wordslist.js").unit2, "unit2", false);
-fetchWords(require("./wordslist.js").tourbillon, "tourbillon", false);
+fetchWords(require("./wordslist.js").unit3, "unit3", false);
