@@ -98,17 +98,17 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
   );
 
   useEffect(() => {
-    if (pressingKey === "z" || pressingKey === "Meta") {
-      setHrefPath(`https://www.larousse.fr/dictionnaires/francais-chinois/`);
-    } else if (pressingKey === "x") {
-      setHrefPath(`https://www.collinsdictionary.com/conjugation/french/`);
-    } else if (pressingKey === "c") {
-      setHrefPath(`https://www.frdic.com/dicts/fr/`);
-    } else {
-      setHrefPath(
-        `https://www.collinsdictionary.com/dictionary/french-english/`
-      );
-    }
+    // if (pressingKey === "z" || pressingKey === "Meta") {
+    //   setHrefPath(`https://www.larousse.fr/dictionnaires/francais-chinois/`);
+    // } else if (pressingKey === "x") {
+    //   setHrefPath(`https://www.collinsdictionary.com/conjugation/french/`);
+    // } else if (pressingKey === "c") {
+    //   setHrefPath(`https://www.frdic.com/dicts/fr/`);
+    // } else {
+    //   setHrefPath(
+    //     `https://www.collinsdictionary.com/dictionary/french-english/`
+    //   );
+    // }
   }, [pressingKey]);
 
   return (
