@@ -588,6 +588,7 @@ exports.unit3 = [
   "pain",
   "viennoiseries",
   "pâtisserie",
+  "baguette",
   "croissant",
   "chocolat",
   "tarte",
