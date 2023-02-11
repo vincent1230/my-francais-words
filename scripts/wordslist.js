@@ -29,6 +29,7 @@ exports.unit1 = [
 ];
 
 exports.semaine = [
+  "semaine",
   "lundi",
   "mardi",
   "mercredi",
@@ -407,7 +408,6 @@ exports.unit2 = [
   "beaucoup",
   "perdu",
   "vieux",
-  "marché",
   "aux",
   "poisson",
   "juste",
@@ -525,7 +525,6 @@ exports.unit3 = [
   "aimer",
   "adorer",
   "détester",
-  "magasin",
   "nourriture",
   "commerce",
   "commerçant",
@@ -542,6 +541,7 @@ exports.unit3 = [
   "marchande",
   "client",
   "cliente",
+  "supermarché",
   "boucherie",
   "boucher",
   "bouchère",
