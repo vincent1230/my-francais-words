@@ -207,6 +207,7 @@ const data = [
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/ch-sound.m4a",
       content: "/ʃ/",
+      extra: "晒",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/ge-sound.m4a",
