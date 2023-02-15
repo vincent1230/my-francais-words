@@ -1,5 +1,6 @@
 import { Image, List, Tooltip } from "antd";
 import { ReactElement } from "react";
+import verbsExplain from "../data/verbs_explain.json";
 import { ImageResult, Word, WordQuery } from "../interfaces";
 import extraExplain from "./extra_explain.json";
 import { WordButton } from "./WordButton";
@@ -103,6 +104,25 @@ export const WordQueryBlock = (props: {
   }
 
   const extra = extraExplain[query.query as keyof typeof extraExplain];
+  const verbExplain = verbsExplain.filter((d) => {
+    return d.query === query.query;
+  });
+  let verbGroup = null;
+  if (verbExplain && verbExplain.length === 1) {
+    if (verbExplain[0].wordGroup) {
+      switch (verbExplain[0].wordGroup) {
+        case 1:
+          verbGroup = "1st group";
+          break;
+        case 2:
+          verbGroup = "2nd group";
+          break;
+        case 3:
+          verbGroup = "3rd group";
+          break;
+      }
+    }
+  }
 
   return (
     <div style={{ width: "100vw" }}>
@@ -146,6 +166,10 @@ export const WordQueryBlock = (props: {
               </div>
               {extra && (
                 <div style={{ opacity: 0.7, marginTop: 8 }}>({extra})</div>
+              )}
+
+              {verbGroup && (
+                <div style={{ opacity: 0.7, marginTop: 8 }}>({verbGroup})</div>
               )}
             </span>
           </Tooltip>

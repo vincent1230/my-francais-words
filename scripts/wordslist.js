@@ -163,6 +163,35 @@ exports.nationalite = [
   "Vietnamien",
 ];
 
+exports.verbs_practice = [
+  "être",
+  "avoir",
+  "aller",
+  "faire",
+  "appeler",
+  "prendre",
+  "descendre",
+  "visiter",
+  "chercher",
+  "continuer",
+  "tourner",
+  "passer",
+  "traverser",
+  "commencer",
+  "payer",
+  "fermer",
+  "acheter",
+  "manger",
+  "travailler",
+  "ouvrir",
+  "vouloir",
+  "pouvoir",
+  "venir",
+  "tenir",
+  "finir",
+  "vendre",
+];
+
 exports.verbs = [
   "accepter",
   "acheter",

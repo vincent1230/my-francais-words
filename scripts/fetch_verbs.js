@@ -53,10 +53,9 @@ function handleResult(queryWord, e) {
     .map((node) => {
       return node.rawText
         .replaceAll("&nbsp;", "")
-        .replaceAll(" ", "")
         .replaceAll("\t", "")
         .replaceAll("\n", "")
-        .replaceAll("\r", "");
+        .trim();
     })
     .filter((d) => {
       return d !== "" && d !== "Present";
@@ -69,6 +68,15 @@ function handleResult(queryWord, e) {
   const back = presentText.filter((node, index) => {
     return index % 2 === 1;
   });
+
+  for (let index = 0; index < front.length; index++) {
+    const element = front[index];
+    if (element.includes(" ")) {
+      const result = element.split(" ");
+      front[index] = result[0];
+      back[index] = result[1] + back[index];
+    }
+  }
 
   const present = { front, back };
 
@@ -124,6 +132,7 @@ async function getApi(queryWord, title, refetch) {
     console.log(`Conjugation oldReuslt: ${queryWord}`);
     return oldResult;
   } else {
+    console.log(`fetch conjugation: ${queryWord}`);
     return getCloudscraper(queryWord).then((e) => {
       return handleResult(queryWord, e);
     });
@@ -150,4 +159,5 @@ const fetchWords = function (word, title, refetch) {
     });
 };
 
-fetchWords(require("./wordslist.js").verbs, "verbs_fetch", false);
+fetchWords(require("./wordslist.js").verbs, "verbs_explain", false);
+fetchWords(require("./wordslist.js").verbs_practice, "verbs_practice", false);

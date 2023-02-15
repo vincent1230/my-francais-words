@@ -79,7 +79,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "fetch": "node scripts/fetch.js",
+    "fetch": "node scripts/fetch.js && node scripts/fetch_verbs.js",
     "fetch_verbs": "node scripts/fetch_verbs.js",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",

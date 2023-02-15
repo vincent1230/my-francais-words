@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { Conjugation } from "./components/Conjugation";
 import { Phonetic } from "./components/Phonetic";
 import { RandomAlphabet } from "./components/RandomAlphabet";
 import { RandomNum } from "./components/RandomNum";
@@ -20,6 +21,7 @@ function App() {
       <Route path="/" element={<Phonetic />} />
       <Route path="phonetic" element={<Phonetic />} />
       <Route path="num" element={<RandomNum />} />
+      <Route path="conjugation" element={<Conjugation />} />
       <Route path="alphabet" element={<RandomAlphabet />} />
       <Route path="verbs" element={<WordGroup words={verbs} />} />
       <Route path="nationalité" element={<WordGroup words={nationalite} />} />
