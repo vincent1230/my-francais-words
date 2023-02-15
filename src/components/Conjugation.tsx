@@ -45,7 +45,7 @@ export const Conjugation = (): ReactElement => {
 export const RandomVerb = (): ReactElement => {
   const [verb, setVerb] = useState<Verb>();
   const [front, setFront] = useState<string>();
-  const [interval, setInterval] = useState(10);
+  const [interval, setInterval] = useState(30);
   const [showAnswer, setShowAnswer] = useState(false);
   const [answer, setAnswer] = useState<string>();
 
@@ -102,11 +102,11 @@ export const RandomVerb = (): ReactElement => {
             width: 160,
           }}
           addonBefore="interval"
-          defaultValue={10}
+          defaultValue={30}
           min={1}
           max={100}
           onChange={(value) => {
-            setInterval(value || 10);
+            setInterval(value || 30);
           }}
         />
       </div>
