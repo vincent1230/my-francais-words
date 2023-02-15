@@ -49,36 +49,50 @@ function handleResult(queryWord, e) {
       return d.getElementsByTagName("h3")[0].text.trim() == "Present";
     });
 
-  const presentText = presentNodes[0].childNodes
-    .map((node) => {
-      return node.rawText
-        .replaceAll("&nbsp;", "")
-        .replaceAll("\t", "")
-        .replaceAll("\n", "")
-        .trim();
-    })
-    .filter((d) => {
-      return d !== "" && d !== "Present";
-    });
+  let presentArr = new Array(6);
+  let brCount = 0;
+  const needAddSpaceFront = ["je", "tu", "il", "nous", "vous", "ils"];
+  presentNodes[0].childNodes.forEach((node) => {
+    let text = node.text
+      .replaceAll("&nbsp;", "")
+      .replaceAll("\t", "")
+      .replaceAll("\n", "")
+      .trim();
 
-  const front = presentText.filter((node, index) => {
-    return index % 2 === 0;
-  });
-
-  const back = presentText.filter((node, index) => {
-    return index % 2 === 1;
-  });
-
-  for (let index = 0; index < front.length; index++) {
-    const element = front[index];
-    if (element.includes(" ")) {
-      const result = element.split(" ");
-      front[index] = result[0];
-      back[index] = result[1] + back[index];
+    if (node.rawTagName == "br") {
+      brCount++;
+    } else if (text != undefined && text != "") {
+      let t = presentArr[brCount] ? presentArr[brCount] : "";
+      if (needAddSpaceFront.includes(text)) {
+        presentArr[brCount] = t + text + " ";
+      } else {
+        presentArr[brCount] = t + text;
+      }
+      // console.log(text);
     }
-  }
+  });
 
+  presentArr = presentArr.filter((a) => {
+    return a != "Present";
+  });
+
+  let front = [];
+  let back = [];
+  presentArr.forEach((p) => {
+    if (p.includes("j'")) {
+      front.push("j'");
+      back.push(p.replaceAll("j'", ""));
+    } else {
+      let result = p.split(" ");
+      front.push(result[0]);
+      back.push(result[1]);
+    }
+  });
   const present = { front, back };
+
+  // console.log(queryWord);
+  // console.log(presentArr);
+  // console.log(present);
 
   let wordNode = root.getElementsByTagName("div").filter((d) => {
     return d.classNames.includes("panel-body") && d.text.includes("belong to");
@@ -128,6 +142,7 @@ function alreadyExistedResult(queryWord, title) {
 
 async function getApi(queryWord, title, refetch) {
   const oldResult = alreadyExistedResult(queryWord, title);
+  // const oldResult = null;
   if (oldResult && !refetch) {
     console.log(`Conjugation oldReuslt: ${queryWord}`);
     return oldResult;
