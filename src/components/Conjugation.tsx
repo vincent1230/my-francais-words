@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, InputNumber } from "antd";
+import { Button, ConfigProvider } from "antd";
 import { encode } from "js-base64";
 import { ReactElement, useEffect, useState } from "react";
 import verbs from "../data/verbs_practice.json";
@@ -45,7 +45,6 @@ export const Conjugation = (): ReactElement => {
 export const RandomVerb = (): ReactElement => {
   const [verb, setVerb] = useState<Verb>();
   const [front, setFront] = useState<string>();
-  const [interval, setInterval] = useState(30);
   const [showAnswer, setShowAnswer] = useState(false);
   const [answer, setAnswer] = useState<string>();
 
@@ -78,12 +77,6 @@ export const RandomVerb = (): ReactElement => {
   useEffect(() => {
     updateVerb();
   }, []);
-  // const { start, reset } = useTimer({
-  //   initialTime: 0,
-  //   autostart: true,
-  //   interval: interval * 1000,
-  //   onTimeUpdate: updateVerb,
-  // });
 
   return (
     <div
@@ -96,28 +89,7 @@ export const RandomVerb = (): ReactElement => {
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          padding: 24,
-        }}
-      >
-        <InputNumber
-          style={{
-            width: 160,
-          }}
-          addonBefore="interval"
-          defaultValue={30}
-          min={1}
-          max={100}
-          onChange={(value) => {
-            setInterval(value || 30);
-          }}
-        />
-      </div>
-
-      <div
-        style={{
-          marginTop: 12,
+          marginTop: 20,
           fontSize: "3em",
           display: "flex",
           opacity: 0.5,
@@ -131,16 +103,15 @@ export const RandomVerb = (): ReactElement => {
         style={{
           display: "flex",
           justifyContent: "center",
-          marginTop: 36,
-          marginBottom: 36,
+          marginTop: 20,
         }}
       >
         <Button
           style={{
             width: "240px",
             height: "70px",
-            paddingTop: 15,
-            paddingBottom: 15,
+            // paddingTop: 15,
+            // paddingBottom: 15,
             alignSelf: "center",
             fontWeight: "bold",
             letterSpacing: 0.1,
@@ -163,7 +134,16 @@ export const RandomVerb = (): ReactElement => {
           Show Answer
         </Button>
       </div>
-
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          fontSize: 50,
+          marginTop: 15,
+        }}
+      >
+        👇
+      </div>
       {showAnswer && (
         <div
           style={{
@@ -179,9 +159,7 @@ export const RandomVerb = (): ReactElement => {
             style={{
               width: "240px",
               height: "70px",
-              paddingTop: 15,
-              paddingBottom: 15,
-              marginTop: 15,
+              marginTop: 20,
               alignSelf: "center",
               fontWeight: "bold",
               fontSize: "1.6rem",
@@ -191,8 +169,6 @@ export const RandomVerb = (): ReactElement => {
             tabIndex={-1}
             color="#000"
             onClick={() => {
-              // reset();
-              // start();
               updateVerb();
             }}
           >
