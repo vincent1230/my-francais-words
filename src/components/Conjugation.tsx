@@ -1,6 +1,5 @@
 import { Button, ConfigProvider, InputNumber } from "antd";
 import { ReactElement, useState } from "react";
-import { useTimer } from "use-timer";
 import verbs from "../data/verbs_practice.json";
 import { getRandomInt } from "./utils";
 
@@ -51,7 +50,7 @@ export const RandomVerb = (): ReactElement => {
 
   const updateVerb = () => {
     let verb = verbs[getRandomInt(0, verbs.length - 1)];
-    let front = frontArr[getRandomInt(0, 7)];
+    let front = frontArr[getRandomInt(0, frontArr.length - 1)];
     setShowAnswer(false);
     setVerb(verb);
     setFront(front);
@@ -74,12 +73,12 @@ export const RandomVerb = (): ReactElement => {
       }
     }
   };
-  const { start, reset } = useTimer({
-    initialTime: 0,
-    autostart: true,
-    interval: interval * 1000,
-    onTimeUpdate: updateVerb,
-  });
+  // const { start, reset } = useTimer({
+  //   initialTime: 0,
+  //   autostart: true,
+  //   interval: interval * 1000,
+  //   onTimeUpdate: updateVerb,
+  // });
 
   return (
     <div
@@ -181,9 +180,9 @@ export const RandomVerb = (): ReactElement => {
             tabIndex={-1}
             color="#000"
             onClick={() => {
-              reset();
+              // reset();
               updateVerb();
-              start();
+              // start();
             }}
           >
             Next
