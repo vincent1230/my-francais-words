@@ -1,5 +1,6 @@
 import { Button, ConfigProvider, InputNumber } from "antd";
-import { ReactElement, useState } from "react";
+import { encode } from "js-base64";
+import { ReactElement, useEffect, useState } from "react";
 import verbs from "../data/verbs_practice.json";
 import { getRandomInt } from "./utils";
 
@@ -73,6 +74,10 @@ export const RandomVerb = (): ReactElement => {
       }
     }
   };
+
+  useEffect(() => {
+    updateVerb();
+  }, []);
   // const { start, reset } = useTimer({
   //   initialTime: 0,
   //   autostart: true,
@@ -147,6 +152,12 @@ export const RandomVerb = (): ReactElement => {
           color="#000"
           onClick={() => {
             setShowAnswer(true);
+            if (answer) {
+              const tail = encode(answer);
+              const baseUrl =
+                "https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Bruno22k?inputText=";
+              new Audio(baseUrl + tail).play();
+            }
           }}
         >
           Show Answer
@@ -181,8 +192,8 @@ export const RandomVerb = (): ReactElement => {
             color="#000"
             onClick={() => {
               // reset();
-              updateVerb();
               // start();
+              updateVerb();
             }}
           >
             Next
