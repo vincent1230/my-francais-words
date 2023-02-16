@@ -90,6 +90,7 @@ export const RandomVerb = (): ReactElement => {
       const audio = new Audio(baseUrl + tail);
       if (mute) {
         audio.volume = 0;
+        audio.muted = true;
       }
       audio.play();
     }
