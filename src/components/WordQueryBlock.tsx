@@ -1,6 +1,8 @@
 import { Image, List, Tooltip } from "antd";
+import { encode } from "js-base64";
 import { ReactElement } from "react";
 import verbsExplain from "../data/verbs_explain.json";
+import headphone from "../img/headphones-solid.svg";
 import { ImageResult, Word, WordQuery } from "../interfaces";
 import extraExplain from "./extra_explain.json";
 import { WordButton } from "./WordButton";
@@ -133,9 +135,7 @@ export const WordQueryBlock = (props: {
           alignItems: "center",
         }}
       >
-        <a
-          href={`${hrefPath}${redirectUrlQuery}`}
-          target="_blank"
+        <div
           style={{
             fontSize: 25,
             fontWeight: "bold",
@@ -150,19 +150,45 @@ export const WordQueryBlock = (props: {
             paddingRight: 24,
             width: 300,
           }}
-          rel="noreferrer"
         >
           <Tooltip placement="bottomRight" title={info} color={wordColor}>
             <span style={{ textAlign: "right" }}>
               <div>
-                <span style={{ textDecoration: "underline" }}>
-                  {query.query}
-                </span>
-                {query.pron && (
-                  <span
-                    style={{ fontFamily: "Arial" }}
-                  >{` [${query.pron}]`}</span>
-                )}
+                <a
+                  href={`${hrefPath}${redirectUrlQuery}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span style={{ textDecoration: "underline" }}>
+                    {query.query}
+                  </span>
+                  {query.pron && (
+                    <span
+                      style={{ fontFamily: "Arial" }}
+                    >{` [${query.pron}]`}</span>
+                  )}
+                </a>
+                <img
+                  src={headphone}
+                  alt={"headphone"}
+                  style={{
+                    width: 26,
+                    height: 26,
+                    padding: 3,
+                    cursor: "pointer",
+                    marginLeft: 10,
+                    verticalAlign: "middle",
+                    // filter:
+                    //   "invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)",
+                  }}
+                  onClick={() => {
+                    const tail = encode(query.query);
+                    const baseUrl =
+                      "https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Bruno22k?inputText=";
+                    const audio = new Audio(baseUrl + tail);
+                    audio.play();
+                  }}
+                />
               </div>
               {extra && (
                 <div style={{ opacity: 0.7, marginTop: 8 }}>({extra})</div>
@@ -173,7 +199,7 @@ export const WordQueryBlock = (props: {
               )}
             </span>
           </Tooltip>
-        </a>
+        </div>
 
         <List
           style={{
