@@ -4,6 +4,7 @@ import { ReactElement } from "react";
 import verbsExplain from "../data/verbs_explain.json";
 import headphone from "../img/headphones-solid.svg";
 import { ImageResult, Word, WordQuery } from "../interfaces";
+import { hex2Filter } from "./Color";
 import extraExplain from "./extra_explain.json";
 import { WordButton } from "./WordButton";
 
@@ -151,13 +152,17 @@ export const WordQueryBlock = (props: {
             width: 300,
           }}
         >
-          <Tooltip placement="bottomRight" title={info} color={wordColor}>
+          <Tooltip placement="bottomLeft" title={info} color={wordColor}>
             <span style={{ textAlign: "right" }}>
               <div>
                 <a
                   href={`${hrefPath}${redirectUrlQuery}`}
                   target="_blank"
                   rel="noreferrer"
+                  style={{
+                    letterSpacing: 0.1,
+                    color: wordColor,
+                  }}
                 >
                   <span style={{ textDecoration: "underline" }}>
                     {query.query}
@@ -176,10 +181,9 @@ export const WordQueryBlock = (props: {
                     height: 26,
                     padding: 3,
                     cursor: "pointer",
-                    marginLeft: 10,
+                    marginLeft: 4,
                     verticalAlign: "middle",
-                    // filter:
-                    //   "invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)",
+                    filter: `${hex2Filter(wordColor)}`,
                   }}
                   onClick={() => {
                     const tail = encode(query.query);
