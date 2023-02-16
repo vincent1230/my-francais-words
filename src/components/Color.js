@@ -1,5 +1,3 @@
-"use strict";
-
 class Color {
   constructor(r, g, b) {
     this.set(r, g, b);
@@ -138,6 +136,8 @@ class Color {
 
         case b:
           h = (r - g) / d + 4;
+          break;
+        default:
           break;
       }
       h /= 6;
@@ -324,16 +324,16 @@ export function hex2Filter(wordColor) {
   const solver = new Solver(color);
   const result = solver.solve();
 
-  let lossMsg;
-  if (result.loss < 1) {
-    lossMsg = "This is a perfect result.";
-  } else if (result.loss < 5) {
-    lossMsg = "The is close enough.";
-  } else if (result.loss < 15) {
-    lossMsg = "The color is somewhat off. Consider running it again.";
-  } else {
-    lossMsg = "The color is extremely off. Run it again!";
-  }
+  // let lossMsg;
+  // if (result.loss < 1) {
+  //   lossMsg = "This is a perfect result.";
+  // } else if (result.loss < 5) {
+  //   lossMsg = "The is close enough.";
+  // } else if (result.loss < 15) {
+  //   lossMsg = "The color is somewhat off. Consider running it again.";
+  // } else {
+  //   lossMsg = "The color is extremely off. Run it again!";
+  // }
 
   cache[wordColor] = result.filter;
 
