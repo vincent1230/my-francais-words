@@ -1,11 +1,12 @@
-import { Image, List, Tooltip } from "antd";
+import { List, Tooltip } from "antd";
 import { encode } from "js-base64";
 import { ReactElement } from "react";
 import verbsExplain from "../data/verbs_explain.json";
 import headphone from "../img/headphones-solid.svg";
-import { ImageResult, Word, WordQuery } from "../interfaces";
+import { Word, WordQuery } from "../interfaces";
 import { hex2Filter } from "./Color";
 import extraExplain from "./extra_explain.json";
+import { ImageList } from "./ImageList";
 import { WordButton } from "./WordButton";
 
 export const WordQueryBlock = (props: {
@@ -225,52 +226,7 @@ export const WordQueryBlock = (props: {
           )}
         />
 
-        {query.image_results && (
-          <List
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "flex-end",
-            }}
-            grid={{
-              column: 3,
-            }}
-            dataSource={query.image_results.slice(0, 3)}
-            renderItem={(item: ImageResult) => (
-              <List.Item>
-                <div
-                  style={{
-                    width: 150,
-                    height: 150,
-                    overflow: "hidden",
-                  }}
-                >
-                  <Image
-                    src={item.thumbnailUrl}
-                    width={150}
-                    height={150}
-                    preview={{
-                      src: item.imageUrl,
-                      mask: (
-                        <div
-                          style={{
-                            width: 150,
-                            height: 150,
-                          }}
-                        />
-                      ),
-                    }}
-                    style={{
-                      objectFit: "scale-down",
-                      overflow: "hidden",
-                    }}
-                  />
-                </div>
-              </List.Item>
-            )}
-          />
-        )}
+        {query.image_results && <ImageList query={query} />}
       </div>
     </div>
   );

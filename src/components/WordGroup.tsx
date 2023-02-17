@@ -8,6 +8,7 @@ import {
 } from "react";
 import { useLocation } from "react-router-dom";
 import { WordQuery } from "../interfaces";
+import { ImageList } from "./ImageList";
 import { getRandomInt } from "./utils";
 import { WordQueryBlock } from "./WordQueryBlock";
 
@@ -166,7 +167,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
                 marginTop: 30,
               }}
             >
-              {randomItem.query}
+              <ImageList query={randomItem} />
             </div>
           )}
           {showAnswer && randomItem && (
