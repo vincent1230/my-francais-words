@@ -234,6 +234,7 @@ const data = [
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/gm-sound.m4a",
       content: "/ɲ/",
+      extra: "捏",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/ing-sound.m4a",
