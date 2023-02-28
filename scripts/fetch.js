@@ -287,4 +287,9 @@ fetchWords(
 );
 fetchWords(require("./wordslist.js").unit1, "unit1", false);
 fetchWords(require("./wordslist.js").unit2, "unit2", false);
-fetchWords(require("./wordslist.js").unit3, "unit3", false);
+fetchWords(require("./wordslist.js").unit3_1, "unit3_1", false);
+fetchWords(require("./wordslist.js").unit3_2, "unit3_2", false);
+fetchWords(require("./wordslist.js").unit3_3, "unit3_3", false);
+fetchWords(require("./wordslist.js").unit4_1, "unit4_1", false);
+fetchWords(require("./wordslist.js").unit4_2, "unit4_2", false);
+fetchWords(require("./wordslist.js").unit4_3, "unit4_3", false);

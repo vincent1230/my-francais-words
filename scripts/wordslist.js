@@ -565,6 +565,7 @@ exports.tourbillon = [
 ];
 
 exports.colours = [
+  "beige",
   "bleu",
   "bleue",
   "blanc",
@@ -589,7 +590,7 @@ exports.colours = [
   "dorée",
 ];
 
-exports.unit3 = [
+exports.unit3_1 = [
   "ouvrir",
   "fermer",
   "vouloir",
@@ -781,6 +782,9 @@ exports.unit3 = [
   "gras",
   "jus",
   "hachée",
+];
+
+exports.unit3_2 = [
   "pâte",
   "pâtes",
   "courgette",
@@ -882,6 +886,9 @@ exports.unit3 = [
   "préparation",
   "chat",
   "chien",
+];
+
+exports.unit3_3 = [
   "panier",
   "épice",
   "agréable",
@@ -988,8 +995,107 @@ exports.unit3 = [
   "chaise",
 ];
 
-exports.unit4 = [];
+exports.unit4_1 = [
+  "vêtement",
+  "chemise",
+  "costume",
+  "jupe",
+  "manteau",
+  "imperméable",
+  "pantalon",
+  "collante",
+  "jean",
+  "pull",
+  "robe",
+  "gilet",
+  "combinaison",
+  "tee-shirt",
+  "veste",
+  "accessoire",
+  "sandale",
+  "bijou",
+  "collier",
+  "boucle",
+  "oreille",
+  "ceinture",
+  "chapeau",
+  "casquette",
+  "bonnet",
+  "chaussure",
+  "botte",
+  "basket",
+  "lunette",
+  "montre",
+  "soleil",
+  "parapluie",
+  "parasol",
+  "sac",
+  "main",
+  "dos",
+  "toile",
+  "talon",
+  "solde",
+  "parti",
+  "réveiller",
+  "lever",
+  "habiller",
+  "doucher",
+  "plaire",
+  "donner",
+  "appréciation",
+  "météo",
+  "décrire",
+  "objet",
+  "matière",
+  "couleur",
+  "coton",
+  "rayure",
+  "cuir",
+  "jean",
+  "laine",
+  "mode",
+  "conseil",
+  "magazine",
+  "recette",
+  "rubrique",
+  "thème",
+  "tenue",
+  "vestimentaire",
+  "maquillage",
+  "accessoire",
+  "début",
+  "fin",
+  "cher",
+  "indispensable",
+  "nécessaire",
+  "parfaite",
+  "mais",
+  "foncée",
+  "claire",
+  "neige",
+  "nuage",
+  "orage",
+  "pluie",
+  "mauvais",
+  "temps",
+  "soleil",
+  "vent",
+  "chaleur",
+  "chaud",
+  "froid",
+  "frais",
+  "écharpe",
+  "gant",
+];
 
-exports.unit5 = [];
+exports.unit4_2 = ["froid"];
 
-exports.unit6 = [];
+exports.unit4_3 = ["froid"];
+
+exports.unit5_1 = [];
+exports.unit5_2 = [];
+exports.unit5_3 = [];
+
+exports.unit6_1 = [];
+exports.unit6_2 = [];
+exports.unit6_3 = [];

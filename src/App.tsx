@@ -13,7 +13,12 @@ import semaine from "./data/semaine.json";
 import tourbillon from "./data/tourbillon.json";
 import unit1 from "./data/unit1.json";
 import unit2 from "./data/unit2.json";
-import unit3 from "./data/unit3.json";
+import unit3_1 from "./data/unit3_1.json";
+import unit3_2 from "./data/unit3_2.json";
+import unit3_3 from "./data/unit3_3.json";
+import unit4_1 from "./data/unit4_1.json";
+import unit4_2 from "./data/unit4_2.json";
+import unit4_3 from "./data/unit4_3.json";
 import verbs from "./data/verbs.json";
 
 function App() {
@@ -36,7 +41,12 @@ function App() {
       />
       <Route path="unité-1" element={<WordGroup words={unit1} />} />
       <Route path="unité-2" element={<WordGroup words={unit2} />} />
-      <Route path="unité-3" element={<WordGroup words={unit3} />} />
+      <Route path="unité-3-1" element={<WordGroup words={unit3_1} />} />
+      <Route path="unité-3-2" element={<WordGroup words={unit3_2} />} />
+      <Route path="unité-3-3" element={<WordGroup words={unit3_3} />} />
+      <Route path="unité-4-1" element={<WordGroup words={unit4_1} />} />
+      <Route path="unité-4-2" element={<WordGroup words={unit4_2} />} />
+      <Route path="unité-4-3" element={<WordGroup words={unit4_3} />} />
     </Routes>
   );
 }
