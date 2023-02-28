@@ -139,7 +139,7 @@ export const WordQueryBlock = (props: {
       >
         <div
           style={{
-            fontSize: 33,
+            fontSize: 32,
             fontWeight: "bold",
             marginTop: 2,
             marginBottom: 2,
@@ -197,11 +197,15 @@ export const WordQueryBlock = (props: {
                 />
               </div>
               {extra && (
-                <div style={{ opacity: 0.7, marginTop: 8 }}>({extra})</div>
+                <div style={{ opacity: 0.7, marginTop: 8, fontSize: 20 }}>
+                  ({extra})
+                </div>
               )}
 
               {verbGroup && (
-                <div style={{ opacity: 0.7, marginTop: 8 }}>({verbGroup})</div>
+                <div style={{ opacity: 0.7, marginTop: 8, fontSize: 20 }}>
+                  ({verbGroup})
+                </div>
               )}
             </span>
           </Tooltip>
