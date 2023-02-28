@@ -182,7 +182,7 @@ export const WordQueryBlock = (props: {
                     height: 22,
                     padding: 3,
                     cursor: "pointer",
-                    marginLeft: 4,
+                    marginLeft: 2,
                     marginTop: 6,
                     verticalAlign: "middle",
                     filter: `${hex2Filter(wordColor)}`,
