@@ -139,7 +139,7 @@ export const WordQueryBlock = (props: {
       >
         <div
           style={{
-            fontSize: 25,
+            fontSize: 33,
             fontWeight: "bold",
             marginTop: 2,
             marginBottom: 2,
@@ -170,7 +170,7 @@ export const WordQueryBlock = (props: {
                   </span>
                   {query.pron && (
                     <span
-                      style={{ fontFamily: "Arial" }}
+                      style={{ fontFamily: "Arial", fontSize: 20 }}
                     >{` [${query.pron}]`}</span>
                   )}
                 </a>
@@ -178,11 +178,12 @@ export const WordQueryBlock = (props: {
                   src={headphone}
                   alt={"headphone"}
                   style={{
-                    width: 26,
-                    height: 26,
+                    width: 22,
+                    height: 22,
                     padding: 3,
                     cursor: "pointer",
                     marginLeft: 4,
+                    marginTop: 6,
                     verticalAlign: "middle",
                     filter: `${hex2Filter(wordColor)}`,
                   }}

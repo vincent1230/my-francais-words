@@ -81,6 +81,7 @@ export const WordButton = (props: {
             paddingTop: 15,
             paddingBottom: 15,
             fontWeight: fontWeight,
+            fontSize: 26,
             letterSpacing: 0.1,
             margin: 10,
           }}

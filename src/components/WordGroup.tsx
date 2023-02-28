@@ -109,9 +109,7 @@ export const WordGroup = (props: { words: WordQuery[] }): ReactElement => {
       setHrefPath(`https://www.collinsdictionary.com/conjugation/french/`);
       // setHrefPath(`https://www.larousse.fr/dictionnaires/francais-chinois/`);
     } else {
-      setHrefPath(
-        `https://www.collinsdictionary.com/dictionary/french-english/`
-      );
+      setHrefPath(`https://www.frdic.com/dicts/fr/`);
     }
   }, [pressingKey]);
 

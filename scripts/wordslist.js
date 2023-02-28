@@ -564,7 +564,8 @@ exports.tourbillon = [
   "enlacés",
 ];
 
-exports.colours = [
+exports.couleur = [
+  "couleur",
   "beige",
   "bleu",
   "bleue",
@@ -1023,8 +1024,8 @@ exports.unit4_1 = [
   "chaussure",
   "botte",
   "basket",
-  "lunette",
   "montre",
+  "lunette",
   "soleil",
   "parapluie",
   "parasol",
@@ -1044,8 +1045,9 @@ exports.unit4_1 = [
   "appréciation",
   "météo",
   "décrire",
-  "objet",
   "matière",
+  "sujet",
+  "objet",
   "couleur",
   "coton",
   "cuir",

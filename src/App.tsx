@@ -5,7 +5,7 @@ import { Phonetic } from "./components/Phonetic";
 import { RandomAlphabet } from "./components/RandomAlphabet";
 import { RandomNum } from "./components/RandomNum";
 import { WordGroup } from "./components/WordGroup";
-import colours from "./data/colours.json";
+import couleur from "./data/couleur.json";
 import nationalite from "./data/nationalite.json";
 import possessive_adjectives from "./data/possessive_adjectives.json";
 import professions from "./data/professions.json";
@@ -34,7 +34,7 @@ function App() {
       <Route path="semaine" element={<WordGroup words={semaine} />} />
       <Route path="professions" element={<WordGroup words={professions} />} />
       <Route path="tourbillon" element={<WordGroup words={tourbillon} />} />
-      <Route path="colours" element={<WordGroup words={colours} />} />
+      <Route path="couleur" element={<WordGroup words={couleur} />} />
       <Route
         path="possessive_adjectives"
         element={<WordGroup words={possessive_adjectives} />}

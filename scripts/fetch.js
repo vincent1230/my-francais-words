@@ -279,7 +279,7 @@ fetchWords(require("./wordslist.js").nationalite, "nationalite", false);
 fetchWords(require("./wordslist.js").semaine, "semaine", false);
 fetchWords(require("./wordslist.js").professions, "professions", false);
 fetchWords(require("./wordslist.js").tourbillon, "tourbillon", false);
-fetchWords(require("./wordslist.js").colours, "colours", false);
+fetchWords(require("./wordslist.js").couleur, "couleur", false);
 fetchWords(
   require("./wordslist.js").possessive_adjectives,
   "possessive_adjectives",
