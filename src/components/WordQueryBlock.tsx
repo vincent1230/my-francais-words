@@ -153,7 +153,11 @@ export const WordQueryBlock = (props: {
             width: 300,
           }}
         >
-          <Tooltip placement="bottom" title={info} color={wordColor}>
+          <Tooltip
+            placement="bottom"
+            title={`${info}, ${query.translation}`}
+            color={wordColor}
+          >
             <span style={{ textAlign: "right" }}>
               <div>
                 <a

@@ -1143,7 +1143,7 @@ exports.unit4_2 = [
   "petite",
 ];
 
-exports.unit4_3 = ["froid"];
+exports.unit4_3 = ["lundi"];
 
 exports.unit5_1 = [];
 exports.unit5_2 = [];

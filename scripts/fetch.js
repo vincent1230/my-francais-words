@@ -61,6 +61,28 @@ function handleResult(queryWord, e) {
   const pos = root.getElementsByTagName("span").filter((span) => {
     return span.classNames.includes("pos");
   });
+  let translation = null;
+  let transGroup = root.getElementsByTagName("div").filter((d) => {
+    return d.classNames.includes("type-translation");
+  });
+  if (transGroup.length == 0) {
+    transGroup = root.getElementsByTagName("span").filter((d) => {
+      return d.classNames.includes("type-translation");
+    });
+  }
+
+  if (transGroup && transGroup.length > 0) {
+    const t = transGroup[0].childNodes.filter((n) => {
+      return (
+        n.tagName === "A" &&
+        n instanceof HTMLParser.HTMLElement &&
+        n.getAttribute("title").includes("Translation of")
+      );
+    });
+    if (t && t.length > 0) {
+      translation = t[0].text.trim();
+    }
+  }
 
   a.forEach((element) => {
     const title = element.getAttribute("title");
@@ -136,7 +158,7 @@ function handleResult(queryWord, e) {
       }
     }
   });
-  return { query: queryWord, result, pron };
+  return { query: queryWord, result, pron, translation };
 }
 
 async function imageSearch(result, title) {
