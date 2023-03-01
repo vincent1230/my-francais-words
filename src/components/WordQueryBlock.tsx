@@ -154,7 +154,7 @@ export const WordQueryBlock = (props: {
           }}
         >
           <Tooltip
-            placement="bottom"
+            placement="bottomRight"
             title={
               <>
                 <div style={{ textAlign: "center" }}>{info}</div>

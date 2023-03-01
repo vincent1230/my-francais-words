@@ -1099,6 +1099,7 @@ exports.unit4_2 = [
   "liseuse",
   "numérique",
   "montre",
+  "connectée",
   "connecté",
   "ordinateur",
   "portable",
