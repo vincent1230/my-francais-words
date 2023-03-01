@@ -155,7 +155,16 @@ export const WordQueryBlock = (props: {
         >
           <Tooltip
             placement="bottom"
-            title={`${info}, ${query.translation}`}
+            title={
+              <>
+                <div style={{ textAlign: "center", fontWeight: "bold" }}>
+                  {info}
+                </div>
+                <div
+                  style={{ textAlign: "center", fontWeight: "bold" }}
+                >{`( ${query.translation?.join(", ")} )`}</div>
+              </>
+            }
             color={wordColor}
           >
             <span style={{ textAlign: "right" }}>

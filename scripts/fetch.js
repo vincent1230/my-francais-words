@@ -61,28 +61,40 @@ function handleResult(queryWord, e) {
   const pos = root.getElementsByTagName("span").filter((span) => {
     return span.classNames.includes("pos");
   });
-  let translation = null;
-  let transGroup = root.getElementsByTagName("div").filter((d) => {
-    return d.classNames.includes("type-translation");
-  });
-  if (transGroup.length == 0) {
-    transGroup = root.getElementsByTagName("span").filter((d) => {
-      return d.classNames.includes("type-translation");
-    });
-  }
 
-  if (transGroup && transGroup.length > 0) {
-    const t = transGroup[0].childNodes.filter((n) => {
-      return (
-        n.tagName === "A" &&
-        n instanceof HTMLParser.HTMLElement &&
-        n.getAttribute("title").includes("Translation of")
-      );
-    });
-    if (t && t.length > 0) {
-      translation = t[0].text.trim();
-    }
+  const dictlink = root.getElementsByTagName("div").filter((d) => {
+    return d.classNames.includes("dictlink");
+  });
+  const transDiv = dictlink[0].getElementsByTagName("div").filter((d) => {
+    return (
+      d.classNames.includes("type-translation") &&
+      d.classNames.includes("sense")
+    );
+  });
+  const transSpan = dictlink[0].getElementsByTagName("span").filter((d) => {
+    return (
+      d.classNames.includes("type-translation") &&
+      d.parentNode.classNames.includes("sense")
+    );
+  });
+  let transGroup;
+  if (transDiv.length == 0) {
+    transGroup = transSpan;
+  } else {
+    transGroup = transDiv.concat(transSpan);
   }
+  let translation = new Array();
+  const transNode = transGroup.flatMap((e) => {
+    return e.childNodes;
+  });
+  transNode.forEach((e) => {
+    if (e instanceof HTMLParser.HTMLElement) {
+      const title = e.getAttribute("title");
+      if (e.text && title) {
+        translation.push(e.text);
+      }
+    }
+  });
 
   a.forEach((element) => {
     const title = element.getAttribute("title");
@@ -246,6 +258,7 @@ function alreadyExistedResult(queryWord, title) {
 
 async function getApi(queryWord, title, refetch) {
   const oldResult = alreadyExistedResult(queryWord, title);
+  // const oldResult = null;
   if (oldResult && !refetch) {
     console.log(`Collins oldReuslt: ${queryWord}`);
     return imageSearch(oldResult, title);
