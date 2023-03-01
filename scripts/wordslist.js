@@ -53,6 +53,11 @@ exports.semaine = [
   "été",
   "automne",
   "hiver",
+  "matin",
+  "midi",
+  "après-midi",
+  "soir",
+  "nuit",
 ];
 
 exports.professions = [
