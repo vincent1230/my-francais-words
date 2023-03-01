@@ -157,12 +157,12 @@ export const WordQueryBlock = (props: {
             placement="bottom"
             title={
               <>
-                <div style={{ textAlign: "center", fontWeight: "bold" }}>
-                  {info}
-                </div>
+                <div style={{ textAlign: "center" }}>{info}</div>
                 <div
-                  style={{ textAlign: "center", fontWeight: "bold" }}
-                >{`( ${query.translation?.join(", ")} )`}</div>
+                  style={{
+                    textAlign: "center",
+                  }}
+                >{`(${query.translation?.join(", ")})`}</div>
               </>
             }
             color={wordColor}
