@@ -1,7 +1,6 @@
 import { List, Tooltip } from "antd";
 import { encode } from "js-base64";
 import { ReactElement } from "react";
-import verbsExplain from "../data/verbs_explain.json";
 import headphone from "../img/headphones-solid.svg";
 import { Word, WordQuery } from "../interfaces";
 import { hex2Filter } from "./Color";
@@ -108,23 +107,18 @@ export const WordQueryBlock = (props: {
   }
 
   const extra = extraExplain[query.query as keyof typeof extraExplain];
-  const verbExplain = verbsExplain.filter((d) => {
-    return d.query === query.query;
-  });
   let verbGroup = null;
-  if (verbExplain && verbExplain.length === 1) {
-    if (verbExplain[0].wordGroup) {
-      switch (verbExplain[0].wordGroup) {
-        case 1:
-          verbGroup = "1st group";
-          break;
-        case 2:
-          verbGroup = "2nd group";
-          break;
-        case 3:
-          verbGroup = "3rd group";
-          break;
-      }
+  if (query.verbGroup) {
+    switch (query.verbGroup) {
+      case 1:
+        verbGroup = "1st group";
+        break;
+      case 2:
+        verbGroup = "2nd group";
+        break;
+      case 3:
+        verbGroup = "3rd group";
+        break;
     }
   }
 

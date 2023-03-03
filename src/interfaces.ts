@@ -9,6 +9,7 @@ export interface Word {
 export interface WordQuery {
   pron: string | null;
   translation?: string[] | null;
+  verbGroup?: number;
   image_results: ImageResult[];
   query: string;
   result: Word[];

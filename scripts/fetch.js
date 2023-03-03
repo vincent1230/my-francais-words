@@ -173,6 +173,35 @@ function handleResult(queryWord, e) {
   return { query: queryWord, result, pron, translation };
 }
 
+async function conjugationSearch(result) {
+  let containsVerb = false;
+  for (let index = 0; index < result.result.length; index++) {
+    const element = result.result[index];
+    if (
+      element.pos &&
+      (element.pos == "verb" || element.pos.includes("transitive verb"))
+    ) {
+      containsVerb = true;
+      break;
+    }
+  }
+  if (containsVerb) {
+    return require("./fetch_verbs.js")
+      .requestConjugationApi(result.query.replaceAll("’", "-"))
+      .then((values) => {
+        if (values.wordGroup) {
+          result.verbGroup = values.wordGroup;
+        }
+        return result;
+      })
+      .catch((e) => {
+        return result;
+      });
+  } else {
+    return result;
+  }
+}
+
 async function imageSearch(result, title) {
   let cacheResult;
   try {
@@ -285,12 +314,13 @@ async function getApi(queryWord, title, refetch) {
           return handleResult(queryWord, e);
         });
       })
-      .then((result) => imageSearch(result, title));
+      .then((result) => imageSearch(result, title))
+      .then((result) => conjugationSearch(result));
   }
 }
 
 const fetchWords = function (word, title, refetch) {
-  Promise.all(word.map((w) => getApi(w, title, refetch)))
+  return Promise.all(word.map((w) => getApi(w, title, refetch)))
     .then((values) => {
       const result = new Array();
       values.forEach((e) => {

@@ -1179,7 +1179,7 @@ exports.unit4_2 = [
   "petite",
 ];
 
-exports.unit4_3 = ["lundi"];
+exports.unit4_3 = ["s’habiller"];
 
 exports.unit5_1 = [];
 exports.unit5_2 = [];

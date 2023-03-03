@@ -30,13 +30,6 @@ function getCloudscraper(queryWord) {
   });
 }
 
-function getCloudscraperByUrl(url) {
-  return cloudscraper({
-    method: "GET",
-    url: url,
-  });
-}
-
 function handleResult(queryWord, e) {
   const root = HTMLParser.parse(e);
 
@@ -154,6 +147,12 @@ async function getApi(queryWord, title, refetch) {
   }
 }
 
+async function requestConjugationApi(queryWord) {
+  return getCloudscraper(queryWord).then((e) => {
+    return handleResult(queryWord, e);
+  });
+}
+
 const fetchWords = function (word, title, refetch) {
   Promise.all(word.map((w) => getApi(w, title, refetch)))
     .then((values) => {
@@ -174,5 +173,8 @@ const fetchWords = function (word, title, refetch) {
     });
 };
 
-fetchWords(require("./wordslist.js").verbs, "verbs_explain", false);
-fetchWords(require("./wordslist.js").verbs_practice, "verbs_practice", false);
+// fetchWords(require("./wordslist.js").verbs, "verbs_explain", false);
+// fetchWords(require("./wordslist.js").verbs_practice, "verbs_practice", false);
+
+// module.exports = requestConjugationApi;
+exports.requestConjugationApi = requestConjugationApi;
