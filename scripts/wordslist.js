@@ -1051,6 +1051,8 @@ exports.unit4_1 = [
   "sac",
   "main",
   "dos",
+  "écharpe",
+  "gant",
   "toile",
   "solde",
   "partir",
@@ -1095,6 +1097,9 @@ exports.unit4_1 = [
   "beau",
   "éclaircie",
   "arc",
+  "ciel",
+  "arc-en-ciel",
+  "neiger",
   "neige",
   "nuage",
   "nuageux",
@@ -1103,17 +1108,18 @@ exports.unit4_1 = [
   "tornade",
   "bise",
   "pluie",
-  "mauvais",
+  "pleuvoir",
+  "pleut",
   "temps",
   "soleil",
   "vent",
   "chaleur",
   "chaud",
   "froid",
+  "geler",
   "gèle",
+  "gelé",
   "frais",
-  "écharpe",
-  "gant",
   "porter",
   "mettre",
   "habiller",
@@ -1122,9 +1128,12 @@ exports.unit4_1 = [
   "vendeuse",
   "mari",
   "femme",
+  "mauvais",
 ];
 
 exports.unit4_2 = [
+  "singulier",
+  "pluriel",
   "technologique",
   "appareil",
   "photo",
@@ -1179,7 +1188,7 @@ exports.unit4_2 = [
   "petite",
 ];
 
-exports.unit4_3 = ["s’habiller"];
+exports.unit4_3 = ["être"];
 
 exports.unit5_1 = [];
 exports.unit5_2 = [];

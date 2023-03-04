@@ -86,9 +86,19 @@ export const WordQueryBlock = (props: {
     return true;
   });
 
+  let posIncludesVerb = false;
+  if (query.result && query.result.length > 0) {
+    let filter = query.result.filter((r) => {
+      return r.pos === "verb";
+    });
+    posIncludesVerb = filter.length > 0;
+  }
+
   // https://antv.vision/zh/docs/specification/language/palette
   let wordColor = "#000";
-  if (info && info.includes("masculine/feminine")) {
+  if (info && (info === "verb" || query.verbGroup || posIncludesVerb)) {
+    wordColor = "#000";
+  } else if (info && info.includes("masculine/feminine")) {
     wordColor = "#8D00A1";
   } else if (info && info.includes("masculine")) {
     wordColor = "#1677ff";
@@ -96,8 +106,6 @@ export const WordQueryBlock = (props: {
     wordColor = "#FF5CA2";
   } else if (info && info === "preposition") {
     wordColor = "#FF6B3B";
-  } else if (info && info === "verb") {
-    wordColor = "#000";
   } else if (info && info === "adverb") {
     wordColor = "#B40F0F";
   } else if (info && info === "adjective") {

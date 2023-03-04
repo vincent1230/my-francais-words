@@ -289,7 +289,7 @@ async function getApi(queryWord, title, refetch) {
   const oldResult = alreadyExistedResult(queryWord, title);
   // const oldResult = null;
   if (oldResult && !refetch) {
-    console.log(`Collins oldReuslt: ${queryWord}`);
+    // console.log(`Collins oldReuslt: ${queryWord}`);
     return imageSearch(oldResult, title);
   } else {
     return getCloudscraper(queryWord)

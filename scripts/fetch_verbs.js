@@ -88,7 +88,10 @@ function handleResult(queryWord, e) {
   // console.log(present);
 
   let wordNode = root.getElementsByTagName("div").filter((d) => {
-    return d.classNames.includes("panel-body") && d.text.includes("belong to");
+    return (
+      d.classNames.includes("panel-body") &&
+      (d.text.includes("belong to") || d.text.includes("is an auxiliary"))
+    );
   });
 
   let wordExplain = null;
@@ -176,5 +179,4 @@ const fetchWords = function (word, title, refetch) {
 // fetchWords(require("./wordslist.js").verbs, "verbs_explain", false);
 // fetchWords(require("./wordslist.js").verbs_practice, "verbs_practice", false);
 
-// module.exports = requestConjugationApi;
 exports.requestConjugationApi = requestConjugationApi;
