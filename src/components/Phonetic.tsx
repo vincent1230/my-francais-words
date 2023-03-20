@@ -135,17 +135,17 @@ const data = [
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/an-sound.m4a",
       content: "/ɑ̃/",
-      extra: "昂 + 鼻",
+      extra: "/ɑ鼻/舌位后",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/in-sound.m4a",
       content: "/ɛ̃/",
-      extra: "安 + 鼻",
+      extra: "/a鼻/舌位前 爱的起始舌位",
     },
     {
       href: "https://www.masteryourfrench.com/wp-content/uploads/2020/04/on-sound.m4a",
       content: "/ɔ̃/",
-      extra: "喔 + 鼻",
+      extra: "/o鼻/哦（ə舌位更后）",
     },
   ],
   [

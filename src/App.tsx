@@ -19,6 +19,9 @@ import unit3_3 from "./data/unit3_3.json";
 import unit4_1 from "./data/unit4_1.json";
 import unit4_2 from "./data/unit4_2.json";
 import unit4_3 from "./data/unit4_3.json";
+import unit5_1 from "./data/unit5_1.json";
+import unit5_2 from "./data/unit5_2.json";
+import unit5_3 from "./data/unit5_3.json";
 import verbs from "./data/verbs.json";
 
 function App() {
@@ -47,6 +50,9 @@ function App() {
       <Route path="unité-4-1" element={<WordGroup words={unit4_1} />} />
       <Route path="unité-4-2" element={<WordGroup words={unit4_2} />} />
       <Route path="unité-4-3" element={<WordGroup words={unit4_3} />} />
+      <Route path="unité-5-1" element={<WordGroup words={unit5_1} />} />
+      <Route path="unité-5-2" element={<WordGroup words={unit5_2} />} />
+      <Route path="unité-5-3" element={<WordGroup words={unit5_3} />} />
     </Routes>
   );
 }

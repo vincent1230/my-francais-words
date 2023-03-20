@@ -174,6 +174,9 @@ function handleResult(queryWord, e) {
 }
 
 async function conjugationSearch(result) {
+  if (result.result == null) {
+    return result;
+  }
   let containsVerb = false;
   for (let index = 0; index < result.result.length; index++) {
     const element = result.result[index];
@@ -358,3 +361,6 @@ fetchWords(require("./wordslist.js").unit3_3, "unit3_3", false);
 fetchWords(require("./wordslist.js").unit4_1, "unit4_1", false);
 fetchWords(require("./wordslist.js").unit4_2, "unit4_2", false);
 fetchWords(require("./wordslist.js").unit4_3, "unit4_3", false);
+fetchWords(require("./wordslist.js").unit5_1, "unit5_1", false);
+fetchWords(require("./wordslist.js").unit5_2, "unit5_2", false);
+fetchWords(require("./wordslist.js").unit5_3, "unit5_3", false);
