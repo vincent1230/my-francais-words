@@ -66,10 +66,7 @@ function handleResult(queryWord, e) {
     return d.classNames.includes("dictlink");
   });
   const transDiv = dictlink[0].getElementsByTagName("div").filter((d) => {
-    return (
-      d.classNames.includes("type-translation") &&
-      d.classNames.includes("sense")
-    );
+    return d.classNames.includes("type-translation") && d.classNames.includes("sense");
   });
   const transSpan = dictlink[0].getElementsByTagName("span").filter((d) => {
     return (
@@ -109,11 +106,9 @@ function handleResult(queryWord, e) {
           const orth = parent.getElementsByTagName("span").filter((span) => {
             return span.classNames && span.classNames == "orth";
           });
-          const quoteTag = parent
-            .getElementsByTagName("span")
-            .filter((span) => {
-              return span.classNames && span.classNames == "quote";
-            });
+          const quoteTag = parent.getElementsByTagName("span").filter((span) => {
+            return span.classNames && span.classNames == "quote";
+          });
           if (orth && orth.length > 0) {
             word = orth[0].text;
           } else {
@@ -145,18 +140,14 @@ function handleResult(queryWord, e) {
         rightLength = word.length <= 18;
       }
 
-      const posParent =
-        element.parentNode.parentNode.parentNode.parentNode.parentNode;
+      const posParent = element.parentNode.parentNode.parentNode.parentNode.parentNode;
       const posMap = posParent
         .getElementsByTagName("span")
         .filter((span) => {
           return span.classNames.includes("pos");
         })
         .map((p) => {
-          return p.textContent
-            .replace("[ '", "")
-            .replace("' ]", "")
-            .toLocaleLowerCase();
+          return p.textContent.replace("[ '", "").replace("' ]", "").toLocaleLowerCase();
         });
 
       if (result.length < 2 || rightLength) {
@@ -217,11 +208,7 @@ async function imageSearch(result, title) {
     const filterResult = cacheResult.filter((e) => {
       return e.query == result.query;
     });
-    if (
-      filterResult &&
-      filterResult.length > 0 &&
-      filterResult[0].image_results
-    ) {
+    if (filterResult && filterResult.length > 0 && filterResult[0].image_results) {
       result.image_results = filterResult[0].image_results;
       // console.log(`image cache: ${result.query}`);
       return result;
@@ -305,9 +292,7 @@ async function getApi(queryWord, title, refetch) {
         }
 
         const root = HTMLParser.parse(e);
-        const action = root
-          .getElementsByTagName("form")[0]
-          .getAttribute("action");
+        const action = root.getElementsByTagName("form")[0].getAttribute("action");
         const newPath = action.replaceAll('\\"', "").split("?")[0];
         const newUrl = `https://www.collinsdictionary.com${newPath}`;
         if (newPath === "/spellcheck/french-english") {
@@ -342,25 +327,18 @@ const fetchWords = function (word, title, refetch) {
     });
 };
 
-fetchWords(require("./wordslist.js").verbs, "verbs", false);
-fetchWords(require("./wordslist.js").nationalite, "nationalite", false);
-fetchWords(require("./wordslist.js").semaine, "semaine", false);
-fetchWords(require("./wordslist.js").professions, "professions", false);
-fetchWords(require("./wordslist.js").tourbillon, "tourbillon", false);
-fetchWords(require("./wordslist.js").couleur, "couleur", false);
-fetchWords(
-  require("./wordslist.js").possessive_adjectives,
-  "possessive_adjectives",
-  false
-);
-fetchWords(require("./wordslist.js").unit1, "unit1", false);
-fetchWords(require("./wordslist.js").unit2, "unit2", false);
-fetchWords(require("./wordslist.js").unit3_1, "unit3_1", false);
-fetchWords(require("./wordslist.js").unit3_2, "unit3_2", false);
-fetchWords(require("./wordslist.js").unit3_3, "unit3_3", false);
-fetchWords(require("./wordslist.js").unit4_1, "unit4_1", false);
-fetchWords(require("./wordslist.js").unit4_2, "unit4_2", false);
-fetchWords(require("./wordslist.js").unit4_3, "unit4_3", false);
-fetchWords(require("./wordslist.js").unit5_1, "unit5_1", false);
-fetchWords(require("./wordslist.js").unit5_2, "unit5_2", false);
-fetchWords(require("./wordslist.js").unit5_3, "unit5_3", false);
+// fetchWords(require("./wordslist.js").verbs, "verbs", false);
+// fetchWords(require("./wordslist.js").nationalite, "nationalite", false);
+// fetchWords(require("./wordslist.js").semaine, "semaine", false);
+// fetchWords(require("./wordslist.js").professions, "professions", false);
+// fetchWords(require("./wordslist.js").tourbillon, "tourbillon", false);
+// fetchWords(require("./wordslist.js").couleur, "couleur", false);
+// fetchWords(
+//   require("./wordslist.js").possessive_adjectives,
+//   "possessive_adjectives",
+//   false
+// );
+fetchWords(require("./wordslist.js").a1dossier0, "a1dossier0", false);
+fetchWords(require("./wordslist.js").a1dossier1lecon1, "a1dossier1lecon1", false);
+fetchWords(require("./wordslist.js").a1dossier1lecon2, "a1dossier1lecon2", false);
+fetchWords(require("./wordslist.js").a1dossier1lecon3, "a1dossier1lecon3", false);
