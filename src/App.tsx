@@ -9,6 +9,10 @@ import a1dossier0 from "./data/a1dossier0.json";
 import a1dossier1lecon1 from "./data/a1dossier1lecon1.json";
 import a1dossier1lecon2 from "./data/a1dossier1lecon2.json";
 import a1dossier1lecon3 from "./data/a1dossier1lecon3.json";
+import a1dossier2lecon1 from "./data/a1dossier2lecon1.json";
+import a1dossier2lecon2 from "./data/a1dossier2lecon2.json";
+import a1dossier2lecon3 from "./data/a1dossier2lecon3.json";
+import biaodian from "./data/biaodian.json";
 import couleur from "./data/couleur.json";
 import nationalite from "./data/nationalite.json";
 import possessive_adjectives from "./data/possessive_adjectives.json";
@@ -31,11 +35,18 @@ function App() {
       <Route path="professions" element={<WordGroup words={professions} />} />
       <Route path="tourbillon" element={<WordGroup words={tourbillon} />} />
       <Route path="couleur" element={<WordGroup words={couleur} />} />
-      <Route path="possessive_adjectives" element={<WordGroup words={possessive_adjectives} />} />
+      <Route
+        path="possessive_adjectives"
+        element={<WordGroup words={possessive_adjectives} />}
+      />
+      <Route path="biaodian" element={<WordGroup words={biaodian} />} />
       <Route path="a1dossier0" element={<WordGroup words={a1dossier0} />} />
       <Route path="a1dossier1lecon1" element={<WordGroup words={a1dossier1lecon1} />} />
       <Route path="a1dossier1lecon2" element={<WordGroup words={a1dossier1lecon2} />} />
       <Route path="a1dossier1lecon3" element={<WordGroup words={a1dossier1lecon3} />} />
+      <Route path="a1dossier2lecon1" element={<WordGroup words={a1dossier2lecon1} />} />
+      <Route path="a1dossier2lecon2" element={<WordGroup words={a1dossier2lecon2} />} />
+      <Route path="a1dossier2lecon3" element={<WordGroup words={a1dossier2lecon3} />} />
     </Routes>
   );
 }

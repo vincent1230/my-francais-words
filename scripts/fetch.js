@@ -338,7 +338,11 @@ const fetchWords = function (word, title, refetch) {
 //   "possessive_adjectives",
 //   false
 // );
+fetchWords(require("./wordslist.js").biaodian, "biaodian", false);
 fetchWords(require("./wordslist.js").a1dossier0, "a1dossier0", false);
 fetchWords(require("./wordslist.js").a1dossier1lecon1, "a1dossier1lecon1", false);
 fetchWords(require("./wordslist.js").a1dossier1lecon2, "a1dossier1lecon2", false);
 fetchWords(require("./wordslist.js").a1dossier1lecon3, "a1dossier1lecon3", false);
+fetchWords(require("./wordslist.js").a1dossier2lecon1, "a1dossier2lecon1", false);
+fetchWords(require("./wordslist.js").a1dossier2lecon2, "a1dossier2lecon2", false);
+fetchWords(require("./wordslist.js").a1dossier2lecon3, "a1dossier2lecon3", false);
