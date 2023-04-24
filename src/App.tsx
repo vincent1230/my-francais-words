@@ -13,6 +13,7 @@ import a1dossier2lecon1 from "./data/a1dossier2lecon1.json";
 import a1dossier2lecon2 from "./data/a1dossier2lecon2.json";
 import a1dossier2lecon3 from "./data/a1dossier2lecon3.json";
 import biaodian from "./data/biaodian.json";
+import buchong from "./data/buchong.json";
 import couleur from "./data/couleur.json";
 import nationalite from "./data/nationalite.json";
 import possessive_adjectives from "./data/possessive_adjectives.json";
@@ -40,6 +41,7 @@ function App() {
         element={<WordGroup words={possessive_adjectives} />}
       />
       <Route path="biaodian" element={<WordGroup words={biaodian} />} />
+      <Route path="buchong" element={<WordGroup words={buchong} />} />
       <Route path="a1dossier0" element={<WordGroup words={a1dossier0} />} />
       <Route path="a1dossier1lecon1" element={<WordGroup words={a1dossier1lecon1} />} />
       <Route path="a1dossier1lecon2" element={<WordGroup words={a1dossier1lecon2} />} />

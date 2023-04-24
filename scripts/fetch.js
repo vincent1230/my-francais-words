@@ -346,3 +346,4 @@ fetchWords(require("./wordslist.js").a1dossier1lecon3, "a1dossier1lecon3", false
 fetchWords(require("./wordslist.js").a1dossier2lecon1, "a1dossier2lecon1", false);
 fetchWords(require("./wordslist.js").a1dossier2lecon2, "a1dossier2lecon2", false);
 fetchWords(require("./wordslist.js").a1dossier2lecon3, "a1dossier2lecon3", false);
+fetchWords(require("./wordslist.js").buchong, "buchong", false);
