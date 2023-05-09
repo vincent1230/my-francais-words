@@ -120,7 +120,7 @@ export const LireRandomNum = (): ReactElement => {
 
 export const EcoutezRandomNum = (): ReactElement => {
   const [num, setNum] = useState<number | undefined>(undefined);
-  const [interval, setInterval] = useState(10);
+  // const [interval, setInterval] = useState(10);
   const [status, setStatus] = useState<string | undefined>(undefined);
   const [inputNum, setInputNum] = useState<number | undefined>(undefined);
   const [correctNum, setCorrectNum] = useState<number | undefined>(undefined);
@@ -134,6 +134,15 @@ export const EcoutezRandomNum = (): ReactElement => {
     color = "#FF4500";
   }
 
+  // const { time, start, pause, reset } = useTimer({
+  //   initialTime: 0,
+  //   autostart: true,
+  //   interval: interval * 1000,
+  //   onTimeUpdate: () => {
+
+  //   },
+  // });
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       console.log(e);
@@ -144,7 +153,15 @@ export const EcoutezRandomNum = (): ReactElement => {
         } else {
           setStatus("wrong");
         }
+
         setCorrectNum(num);
+
+        const changed = getRandomInt(0, 100);
+        setNum(changed);
+        console.log(changed);
+        new Audio(
+          `https://frenchtogether.com/wp-content/uploads/2018/03/${changed}.mp3`
+        ).play();
       } else if (e.code === "Escape") {
         setStatus(undefined);
         setCorrectNum(undefined);
@@ -156,19 +173,6 @@ export const EcoutezRandomNum = (): ReactElement => {
     return () => window.removeEventListener("keydown", handler);
   }, [inputNum, num]);
 
-  useTimer({
-    initialTime: 0,
-    autostart: true,
-    interval: interval * 1000,
-    onTimeUpdate: () => {
-      const changed = getRandomInt(0, 100);
-      setNum(changed);
-      new Audio(
-        `https://frenchtogether.com/wp-content/uploads/2018/03/${changed}.mp3`
-      ).play();
-    },
-  });
-
   return (
     <div style={{ overflowX: "hidden" }}>
       <div
@@ -178,7 +182,7 @@ export const EcoutezRandomNum = (): ReactElement => {
           padding: 24,
         }}
       >
-        <InputNumber
+        {/* <InputNumber
           style={{
             width: 160,
           }}
@@ -189,7 +193,7 @@ export const EcoutezRandomNum = (): ReactElement => {
           onChange={(value) => {
             setInterval(value || 5);
           }}
-        />
+        /> */}
       </div>
 
       <div
