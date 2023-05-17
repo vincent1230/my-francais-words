@@ -12,6 +12,12 @@ import a1dossier1lecon3 from "./data/a1dossier1lecon3.json";
 import a1dossier2lecon1 from "./data/a1dossier2lecon1.json";
 import a1dossier2lecon2 from "./data/a1dossier2lecon2.json";
 import a1dossier2lecon3 from "./data/a1dossier2lecon3.json";
+import a1dossier3lecon1 from "./data/a1dossier3lecon1.json";
+import a1dossier3lecon2 from "./data/a1dossier3lecon2.json";
+import a1dossier3lecon3 from "./data/a1dossier3lecon3.json";
+import a1dossier4lecon1 from "./data/a1dossier4lecon1.json";
+import a1dossier4lecon2 from "./data/a1dossier4lecon2.json";
+import a1dossier4lecon3 from "./data/a1dossier4lecon3.json";
 import biaodian from "./data/biaodian.json";
 import buchong from "./data/buchong.json";
 import couleur from "./data/couleur.json";
@@ -71,6 +77,12 @@ function App() {
       <Route path="a1dossier2lecon1" element={<WordGroup words={a1dossier2lecon1} />} />
       <Route path="a1dossier2lecon2" element={<WordGroup words={a1dossier2lecon2} />} />
       <Route path="a1dossier2lecon3" element={<WordGroup words={a1dossier2lecon3} />} />
+      <Route path="a1dossier3lecon1" element={<WordGroup words={a1dossier3lecon1} />} />
+      <Route path="a1dossier3lecon2" element={<WordGroup words={a1dossier3lecon2} />} />
+      <Route path="a1dossier3lecon3" element={<WordGroup words={a1dossier3lecon3} />} />
+      <Route path="a1dossier4lecon1" element={<WordGroup words={a1dossier4lecon1} />} />
+      <Route path="a1dossier4lecon2" element={<WordGroup words={a1dossier4lecon2} />} />
+      <Route path="a1dossier4lecon3" element={<WordGroup words={a1dossier4lecon3} />} />
     </Routes>
   );
 }
