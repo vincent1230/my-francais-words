@@ -20,6 +20,7 @@ import a1dossier4lecon2 from "./data/a1dossier4lecon2.json";
 import a1dossier4lecon3 from "./data/a1dossier4lecon3.json";
 import biaodian from "./data/biaodian.json";
 import buchong from "./data/buchong.json";
+import corps from "./data/corps.json";
 import couleur from "./data/couleur.json";
 import nationalite from "./data/nationalite.json";
 import possessive_adjectives from "./data/possessive_adjectives.json";
@@ -83,6 +84,7 @@ function App() {
       <Route path="a1dossier4lecon1" element={<WordGroup words={a1dossier4lecon1} />} />
       <Route path="a1dossier4lecon2" element={<WordGroup words={a1dossier4lecon2} />} />
       <Route path="a1dossier4lecon3" element={<WordGroup words={a1dossier4lecon3} />} />
+      <Route path="corps" element={<WordGroup words={corps} />} />
     </Routes>
   );
 }
