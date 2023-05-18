@@ -152,7 +152,6 @@ exports.verbs_practice = [
   "venir",
   "tenir",
   "finir",
-  "vendre",
   "voir",
   "devoir",
   "vivre",
