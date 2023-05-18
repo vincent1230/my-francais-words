@@ -144,7 +144,7 @@ export const RandomVerb = (): ReactElement => {
             playAnswer(answer);
           }}
         >
-          Afficher la réponse
+          Corrigé
         </Button>
       </div>
       <div
