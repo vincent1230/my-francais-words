@@ -144,7 +144,7 @@ export const RandomVerb = (): ReactElement => {
             playAnswer(answer);
           }}
         >
-          Show Answer
+          Afficher la réponse
         </Button>
       </div>
       <div
@@ -185,7 +185,7 @@ export const RandomVerb = (): ReactElement => {
               updateVerb();
             }}
           >
-            Next
+            Suivant
           </Button>
         </div>
       )}
