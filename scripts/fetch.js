@@ -349,8 +349,15 @@ const fetchWords = function (word, title, refetch) {
 // fetchWords(require("./wordslist.js").a1dossier3lecon1, "a1dossier3lecon1", false);
 // fetchWords(require("./wordslist.js").a1dossier3lecon2, "a1dossier3lecon2", false);
 // fetchWords(require("./wordslist.js").a1dossier3lecon3, "a1dossier3lecon3", false);
-fetchWords(require("./wordslist.js").buchong, "buchong", false);
+// fetchWords(require("./wordslist.js").verbs_participe_passe_practice, "verbs_participe_passe_practice", false);
 // fetchWords(require("./wordslist.js").corps, "corps", false);
 // fetchWords(require("./wordslist.js").a1dossier4lecon1, "a1dossier4lecon1", false);
 // fetchWords(require("./wordslist.js").a1dossier4lecon2, "a1dossier4lecon2", false);
 // fetchWords(require("./wordslist.js").a1dossier4lecon3, "a1dossier4lecon3", false);
+// fetchWords(require("./wordslist.js").a1dossier5lecon1, "a1dossier5lecon1", false);
+// fetchWords(require("./wordslist.js").a1dossier5lecon2, "a1dossier5lecon2", false);
+// fetchWords(require("./wordslist.js").a1dossier5lecon3, "a1dossier5lecon3", false);
+// fetchWords(require("./wordslist.js").a1dossier6lecon1, "a1dossier6lecon1", false);
+// fetchWords(require("./wordslist.js").a1dossier6lecon2, "a1dossier6lecon2", false);
+// fetchWords(require("./wordslist.js").a1dossier6lecon3, "a1dossier6lecon3", false);
+fetchWords(require("./wordslist.js").buchong, "buchong", false);

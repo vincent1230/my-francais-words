@@ -18,6 +18,12 @@ import a1dossier3lecon3 from "./data/a1dossier3lecon3.json";
 import a1dossier4lecon1 from "./data/a1dossier4lecon1.json";
 import a1dossier4lecon2 from "./data/a1dossier4lecon2.json";
 import a1dossier4lecon3 from "./data/a1dossier4lecon3.json";
+import a1dossier5lecon1 from "./data/a1dossier5lecon1.json";
+import a1dossier5lecon2 from "./data/a1dossier5lecon2.json";
+import a1dossier5lecon3 from "./data/a1dossier5lecon3.json";
+import a1dossier6lecon1 from "./data/a1dossier6lecon1.json";
+import a1dossier6lecon2 from "./data/a1dossier6lecon2.json";
+import a1dossier6lecon3 from "./data/a1dossier6lecon3.json";
 import biaodian from "./data/biaodian.json";
 import buchong from "./data/buchong.json";
 import corps from "./data/corps.json";
@@ -39,6 +45,7 @@ import unit5_1 from "./data/unit5_1.json";
 import unit5_2 from "./data/unit5_2.json";
 import unit5_3 from "./data/unit5_3.json";
 import verbs from "./data/verbs.json";
+import verbs_participe_passe_practice from "./data/verbs_participe_passe_practice.json";
 
 function App() {
   return (
@@ -84,7 +91,17 @@ function App() {
       <Route path="a1dossier4lecon1" element={<WordGroup words={a1dossier4lecon1} />} />
       <Route path="a1dossier4lecon2" element={<WordGroup words={a1dossier4lecon2} />} />
       <Route path="a1dossier4lecon3" element={<WordGroup words={a1dossier4lecon3} />} />
+      <Route path="a1dossier5lecon1" element={<WordGroup words={a1dossier5lecon1} />} />
+      <Route path="a1dossier5lecon2" element={<WordGroup words={a1dossier5lecon2} />} />
+      <Route path="a1dossier5lecon3" element={<WordGroup words={a1dossier5lecon3} />} />
+      <Route path="a1dossier6lecon1" element={<WordGroup words={a1dossier6lecon1} />} />
+      <Route path="a1dossier6lecon2" element={<WordGroup words={a1dossier6lecon2} />} />
+      <Route path="a1dossier6lecon3" element={<WordGroup words={a1dossier6lecon3} />} />
       <Route path="corps" element={<WordGroup words={corps} />} />
+      <Route
+        path="verbs_participe_passe_practice"
+        element={<WordGroup words={verbs_participe_passe_practice} />}
+      />
     </Routes>
   );
 }

@@ -42,6 +42,15 @@ function handleResult(queryWord, e) {
       return d.getElementsByTagName("h3")[0].text.trim() == "Present";
     });
 
+  const participleNodes = root
+    .getElementsByTagName("div")
+    .filter((d) => {
+      return d.classNames.includes("conjugaison");
+    })
+    .filter((d) => {
+      return d.getElementsByTagName("h3")[0].text.trim() == "Past";
+    });
+
   let presentArr = new Array(6);
   let brCount = 0;
   const needAddSpaceFront = ["je", "tu", "il", "nous", "vous", "ils"];
@@ -137,8 +146,8 @@ function alreadyExistedResult(queryWord, title) {
 }
 
 async function getApi(queryWord, title, refetch) {
-  const oldResult = alreadyExistedResult(queryWord, title);
-  // const oldResult = null;
+  // const oldResult = alreadyExistedResult(queryWord, title);
+  const oldResult = null;
   if (oldResult && !refetch) {
     console.log(`Conjugation oldReuslt: ${queryWord}`);
     return oldResult;
@@ -178,5 +187,10 @@ const fetchWords = function (word, title, refetch) {
 
 // fetchWords(require("./wordslist.js").verbs, "verbs_explain", false);
 // fetchWords(require("./wordslist.js").verbs_practice, "verbs_practice", false);
+// fetchWords(
+//   require("./wordslist.js").verbs_participe_passe_practice2,
+//   "verbs_participe_passe_practice2",
+//   false
+// );
 
 exports.requestConjugationApi = requestConjugationApi;
