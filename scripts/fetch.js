@@ -361,3 +361,8 @@ const fetchWords = function (word, title, refetch) {
 // fetchWords(require("./wordslist.js").a1dossier6lecon2, "a1dossier6lecon2", false);
 // fetchWords(require("./wordslist.js").a1dossier6lecon3, "a1dossier6lecon3", false);
 fetchWords(require("./wordslist.js").buchong, "buchong", false);
+// fetchWords(require("./wordslist.js").adj, "adj", false);
+// fetchWords(require("./wordslist.js").couleur, "couleur", false);
+fetchWords(require("./wordslist.js").a1dossier7lecon1, "a1dossier7lecon1", false);
+fetchWords(require("./wordslist.js").a1dossier7lecon2, "a1dossier7lecon2", false);
+fetchWords(require("./wordslist.js").a1dossier7lecon3, "a1dossier7lecon3", false);

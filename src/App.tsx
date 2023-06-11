@@ -24,6 +24,10 @@ import a1dossier5lecon3 from "./data/a1dossier5lecon3.json";
 import a1dossier6lecon1 from "./data/a1dossier6lecon1.json";
 import a1dossier6lecon2 from "./data/a1dossier6lecon2.json";
 import a1dossier6lecon3 from "./data/a1dossier6lecon3.json";
+import a1dossier7lecon1 from "./data/a1dossier7lecon1.json";
+import a1dossier7lecon2 from "./data/a1dossier7lecon2.json";
+import a1dossier7lecon3 from "./data/a1dossier7lecon3.json";
+import adj from "./data/adj.json";
 import biaodian from "./data/biaodian.json";
 import buchong from "./data/buchong.json";
 import corps from "./data/corps.json";
@@ -97,7 +101,11 @@ function App() {
       <Route path="a1dossier6lecon1" element={<WordGroup words={a1dossier6lecon1} />} />
       <Route path="a1dossier6lecon2" element={<WordGroup words={a1dossier6lecon2} />} />
       <Route path="a1dossier6lecon3" element={<WordGroup words={a1dossier6lecon3} />} />
+      <Route path="a1dossier7lecon1" element={<WordGroup words={a1dossier7lecon1} />} />
+      <Route path="a1dossier7lecon2" element={<WordGroup words={a1dossier7lecon2} />} />
+      <Route path="a1dossier7lecon3" element={<WordGroup words={a1dossier7lecon3} />} />
       <Route path="corps" element={<WordGroup words={corps} />} />
+      <Route path="adj" element={<WordGroup words={adj} />} />
       <Route
         path="verbs_participe_passe_practice"
         element={<WordGroup words={verbs_participe_passe_practice} />}

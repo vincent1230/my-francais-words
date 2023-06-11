@@ -390,33 +390,6 @@ exports.tourbillon = [
   "enlacés",
 ];
 
-exports.couleur = [
-  "couleur",
-  "beige",
-  "bleu",
-  "bleue",
-  "blanc",
-  "blanche",
-  "rouge",
-  "noir",
-  "noire",
-  "jaune",
-  "vert",
-  "verte",
-  "orange",
-  "marron",
-  "violet",
-  "violette",
-  "rose",
-  "gris",
-  "grise",
-  "turquoise",
-  "argent",
-  "argentée",
-  "doré",
-  "dorée",
-];
-
 exports.unit3_1 = [
   "ouvrir",
   "fermer",
