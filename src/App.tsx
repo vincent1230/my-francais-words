@@ -27,6 +27,12 @@ import a1dossier6lecon3 from "./data/a1dossier6lecon3.json";
 import a1dossier7lecon1 from "./data/a1dossier7lecon1.json";
 import a1dossier7lecon2 from "./data/a1dossier7lecon2.json";
 import a1dossier7lecon3 from "./data/a1dossier7lecon3.json";
+import a1dossier8lecon1 from "./data/a1dossier8lecon1.json";
+import a1dossier8lecon2 from "./data/a1dossier8lecon2.json";
+import a1dossier8lecon3 from "./data/a1dossier8lecon3.json";
+import a2dossier1lecon1 from "./data/a2dossier1lecon1.json";
+import a2dossier1lecon2 from "./data/a2dossier1lecon2.json";
+import a2dossier1lecon3 from "./data/a2dossier1lecon3.json";
 import adj from "./data/adj.json";
 import biaodian from "./data/biaodian.json";
 import buchong from "./data/buchong.json";
@@ -50,6 +56,7 @@ import unit5_2 from "./data/unit5_2.json";
 import unit5_3 from "./data/unit5_3.json";
 import verbs from "./data/verbs.json";
 import verbs_participe_passe_practice from "./data/verbs_participe_passe_practice.json";
+import vetements from "./data/vetements.json";
 
 function App() {
   return (
@@ -104,7 +111,14 @@ function App() {
       <Route path="a1dossier7lecon1" element={<WordGroup words={a1dossier7lecon1} />} />
       <Route path="a1dossier7lecon2" element={<WordGroup words={a1dossier7lecon2} />} />
       <Route path="a1dossier7lecon3" element={<WordGroup words={a1dossier7lecon3} />} />
+      <Route path="a1dossier8lecon1" element={<WordGroup words={a1dossier8lecon1} />} />
+      <Route path="a1dossier8lecon2" element={<WordGroup words={a1dossier8lecon2} />} />
+      <Route path="a1dossier8lecon3" element={<WordGroup words={a1dossier8lecon3} />} />
+      <Route path="a2dossier1lecon1" element={<WordGroup words={a2dossier1lecon1} />} />
+      <Route path="a2dossier1lecon2" element={<WordGroup words={a2dossier1lecon2} />} />
+      <Route path="a2dossier1lecon3" element={<WordGroup words={a2dossier1lecon3} />} />
       <Route path="corps" element={<WordGroup words={corps} />} />
+      <Route path="vetements" element={<WordGroup words={vetements} />} />
       <Route path="adj" element={<WordGroup words={adj} />} />
       <Route
         path="verbs_participe_passe_practice"
