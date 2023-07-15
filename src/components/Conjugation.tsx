@@ -268,7 +268,7 @@ export const ConjugationList = (props: {
         renderItem={(item) => (
           <List.Item style={{ color }}>
             <div
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", fontSize: 16 }}
               onClick={() => {
                 playAnswer(item, false);
               }}
