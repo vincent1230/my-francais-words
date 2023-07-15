@@ -4,17 +4,15 @@ import { ReactElement, useEffect, useState } from "react";
 import verbs from "../data/verbs_practice.json";
 import { getRandomInt } from "./utils";
 
-type Present = {
-  back: string[];
-  front: string[];
-};
-
 type Verb = {
-  present: Present;
+  present: string[];
+  passeCompose: string[];
+  imparfait: string[];
+  futurSimple: string[];
   query: string;
 };
 
-const frontArr = ["je", "tu", "il", "elle", "nous", "vous", "ils", "elles"];
+const sujetArr = ["je ", "tu ", "il ", "elle ", "nous ", "vous ", "ils ", "elles "];
 
 export const Conjugation = (): ReactElement => {
   return (
@@ -44,33 +42,40 @@ export const Conjugation = (): ReactElement => {
 
 export const RandomVerb = (): ReactElement => {
   const [verb, setVerb] = useState<Verb>();
-  const [front, setFront] = useState<string>();
+  const [sujet, setSujet] = useState<string>();
   const [showAnswer, setShowAnswer] = useState(false);
   const [answer, setAnswer] = useState<string>();
 
   const updateVerb = () => {
     let verb = verbs[getRandomInt(0, verbs.length - 1)];
-    let front = frontArr[getRandomInt(0, frontArr.length - 1)];
+    let sujet = sujetArr[getRandomInt(0, sujetArr.length - 1)];
     setShowAnswer(false);
     setVerb(verb);
-    setFront(front);
-    let index = verb.present.front.indexOf(front);
-    if (index === -1 && front === "je") {
-      index = verb.present.front.indexOf("j'");
-    } else if (index === -1 && front === "elle") {
-      index = verb.present.front.indexOf("il");
-    } else if (index === -1 && front === "elles") {
-      index = verb.present.front.indexOf("ils");
-    }
+    setSujet(sujet);
 
-    if (index === -1) {
-      setAnswer("error!");
-    } else {
-      if (verb.present.front[index] === "j'") {
-        setAnswer("j'" + verb.present.back[index]);
-      } else {
-        setAnswer(front + " " + verb.present.back[index]);
+    const result = verb.present.filter((v) => {
+      if (sujet === "je ") {
+        return v.includes(sujet) || v.includes("j'");
+      } else if (sujet === "elle ") {
+        return v.includes("il ");
+      } else if (sujet === "elles ") {
+        return v.includes("ils ");
+      } else if (sujet) {
+        return v.includes(sujet);
       }
+      return null;
+    });
+
+    if (result && result.length === 1) {
+      let ans = result[0];
+      if (sujet === "elle ") {
+        ans = ans.replace("il", "elle");
+      } else if (sujet === "elles ") {
+        ans = ans.replace("ils", "elles");
+      }
+      setAnswer(ans);
+    } else {
+      setAnswer("error!");
     }
   };
 
@@ -114,7 +119,7 @@ export const RandomVerb = (): ReactElement => {
           justifyContent: "center",
         }}
       >
-        {front} + {verb?.query || " "}
+        {sujet} + {verb?.query || " "}
       </div>
 
       <div
@@ -144,7 +149,7 @@ export const RandomVerb = (): ReactElement => {
             playAnswer(answer);
           }}
         >
-          Corrigé
+          Corriger
         </Button>
       </div>
       <div
@@ -185,7 +190,7 @@ export const RandomVerb = (): ReactElement => {
               updateVerb();
             }}
           >
-            Suivant
+            Continuer
           </Button>
         </div>
       )}

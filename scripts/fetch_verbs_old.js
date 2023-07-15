@@ -1,5 +1,7 @@
 "use strict";
 
+// https://www.frenchconjugation.com/
+
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = "development";
 process.env.NODE_ENV = "development";
@@ -24,66 +26,104 @@ require("dotenv").config();
 function getCloudscraper(queryWord) {
   return cloudscraper({
     method: "GET",
-    url: `https://www.lalanguefrancaise.com/conjugaison/${encodeURIComponent(
+    url: `https://www.frenchconjugation.com/${encodeURIComponent(
       queryWord
         .toLowerCase()
         .trim()
         .replaceAll(" ", "-")
         .replaceAll("’", "-")
         .replaceAll("'", "-")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-    )}`,
+    )}.html`,
   });
 }
 
 function handleResult(queryWord, e) {
   const root = HTMLParser.parse(e);
-  const conjugaisonContainer = root.getElementById("conjugaison-container");
 
-  const groupNode = root
-    .getElementById("main-container")
-    .getElementsByTagName("p")
-    .filter((e) => {
-      return e.text.includes("est un verbe du");
-    })[0].text;
+  const presentNodes = root
+    .getElementsByTagName("div")
+    .filter((d) => {
+      return d.classNames.includes("conjugaison");
+    })
+    .filter((d) => {
+      return d.getElementsByTagName("h3")[0].text.trim() == "Present";
+    });
+
+  // const participleNodes = root
+  //   .getElementsByTagName("div")
+  //   .filter((d) => {
+  //     return d.classNames.includes("conjugaison");
+  //   })
+  //   .filter((d) => {
+  //     return d.getElementsByTagName("h3")[0].text.trim() == "Past";
+  //   });
+
+  let presentArr = new Array(6);
+  let brCount = 0;
+  const needAddSpaceFront = ["je", "tu", "il", "nous", "vous", "ils"];
+  presentNodes[0].childNodes.forEach((node) => {
+    let text = node.text
+      .replaceAll("&nbsp;", "")
+      .replaceAll("\t", "")
+      .replaceAll("\n", "")
+      .trim();
+
+    if (node.rawTagName == "br") {
+      brCount++;
+    } else if (text != undefined && text != "") {
+      let t = presentArr[brCount] ? presentArr[brCount] : "";
+      if (needAddSpaceFront.includes(text)) {
+        presentArr[brCount] = t + text + " ";
+      } else {
+        presentArr[brCount] = t + text;
+      }
+      // console.log(text);
+    }
+  });
+
+  presentArr = presentArr.filter((a) => {
+    return a != "Present";
+  });
+
+  let front = [];
+  let back = [];
+  presentArr.forEach((p) => {
+    if (p.includes("j'")) {
+      front.push("j'");
+      back.push(p.replaceAll("j'", ""));
+    } else {
+      let result = p.split(" ");
+      front.push(result[0]);
+      back.push(result[1]);
+    }
+  });
+  const present = { front, back };
+
+  // console.log(queryWord);
+  // console.log(presentArr);
+  // console.log(present);
+
+  let wordNode = root.getElementsByTagName("div").filter((d) => {
+    return (
+      d.classNames.includes("panel-body") &&
+      (d.text.includes("belong to") || d.text.includes("is an auxiliary"))
+    );
+  });
+
+  let wordExplain = null;
   let wordGroup = null;
-  if (groupNode.includes("premier groupe")) {
-    wordGroup = 1;
-  } else if (groupNode.includes("deuxième groupe")) {
-    wordGroup = 2;
-  } else if (groupNode.includes("troisième groupe")) {
-    wordGroup = 3;
+  if (wordNode && wordNode.length == 1) {
+    wordExplain = wordNode[0].rawText.replaceAll("\t", "").trim();
+    if (wordExplain.includes("1st group")) {
+      wordGroup = 1;
+    } else if (wordExplain.includes("2nd group")) {
+      wordGroup = 2;
+    } else if (wordExplain.includes("3rd group")) {
+      wordGroup = 3;
+    }
   }
 
-  const present = getArray(conjugaisonContainer, "indicatif", "Présent");
-  const passeCompose = getArray(conjugaisonContainer, "indicatif", "Passé composé");
-  const imparfait = getArray(conjugaisonContainer, "indicatif", "Imparfait");
-  const futurSimple = getArray(conjugaisonContainer, "indicatif", "Futur simple");
-
-  return { query: queryWord, present, passeCompose, imparfait, futurSimple, wordGroup };
-}
-
-function getArray(container, section, h3) {
-  const indicatif = container.getElementById(section);
-  const initialArray = indicatif
-    .getElementsByTagName("h3")
-    .filter((d) => {
-      return d.text.trim() == h3;
-    })[0]
-    .parentNode.childNodes.filter((c) => {
-      return c && c.classNames && c.classNames.includes("conjugaison-items-bloc");
-    });
-
-  return initialArray[0].childNodes
-    .filter((c) => {
-      return c && c.text && c.text.trim();
-    })
-    .map((e) => {
-      // style: '<li>je v<em>ois</em></li>',
-      // return e.toString().replaceAll("<li>").replaceAll("</li>");
-      return e.text;
-    });
+  return { query: queryWord, present, wordGroup, wordExplain };
 }
 
 function alreadyExistedResult(queryWord, title) {
@@ -152,6 +192,12 @@ const fetchWords = function (word, title, refetch) {
     });
 };
 
+// fetchWords(require("./wordslist.js").verbs, "verbs_explain", false);
 fetchWords(require("./wordslist.js").verbs_practice, "verbs_practice", false);
+// fetchWords(
+//   require("./wordslist.js").verbs_participe_passe_practice2,
+//   "verbs_participe_passe_practice2",
+//   false
+// );
 
 exports.requestConjugationApi = requestConjugationApi;
