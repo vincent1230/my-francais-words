@@ -1,4 +1,4 @@
-import { Button, ConfigProvider } from "antd";
+import { Button, ConfigProvider, List } from "antd";
 import { encode } from "js-base64";
 import { ReactElement, useEffect, useState } from "react";
 import verbs from "../data/verbs_practice.json";
@@ -163,37 +163,102 @@ export const RandomVerb = (): ReactElement => {
         👇
       </div>
       {showAnswer && (
-        <div
-          style={{
-            fontSize: "3em",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          {answer}
-
-          <Button
+        <>
+          <div
             style={{
-              width: "240px",
-              height: "70px",
-              marginTop: 20,
-              alignSelf: "center",
-              fontWeight: "bold",
-              fontSize: "1.6rem",
-              boxShadow: "0 0px",
-            }}
-            type="primary"
-            tabIndex={-1}
-            color="#000"
-            onClick={() => {
-              updateVerb();
+              fontSize: "3em",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            Continuer
-          </Button>
-        </div>
+            {answer}
+
+            <Button
+              style={{
+                width: "240px",
+                height: "70px",
+                marginTop: 20,
+                alignSelf: "center",
+                fontWeight: "bold",
+                fontSize: "1.6rem",
+                boxShadow: "0 0px",
+              }}
+              type="primary"
+              tabIndex={-1}
+              color="#000"
+              onClick={() => {
+                updateVerb();
+              }}
+            >
+              Continuer
+            </Button>
+          </div>
+          <div
+            style={{
+              marginTop: 50,
+              fontSize: "3em",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {verb && (
+              <>
+                <ConjugationList
+                  data={verb.present}
+                  title={"Présent"}
+                  color={"#cf1322"}
+                />
+                <ConjugationList
+                  data={verb.passeCompose}
+                  title={"Passé composé"}
+                  color={"#1677ff"}
+                />
+                <ConjugationList
+                  data={verb.imparfait}
+                  title={"Imparfait"}
+                  color={"#237804"}
+                />
+                <ConjugationList
+                  data={verb.futurSimple}
+                  title={"Futur simple"}
+                  color={"#fa541c"}
+                />
+              </>
+            )}
+          </div>
+        </>
       )}
+    </div>
+  );
+};
+
+export const ConjugationList = (props: {
+  data: string[];
+  title: string;
+  color: string;
+}): ReactElement => {
+  const { data, title, color } = props;
+
+  if (!data) {
+    return <div />;
+  }
+
+  return (
+    <div>
+      <div style={{ fontSize: 18, textAlign: "center", marginBottom: 10, color }}>
+        {title}
+      </div>
+
+      <List
+        style={{ marginLeft: 20 }}
+        size="small"
+        bordered
+        dataSource={data}
+        renderItem={(item) => <List.Item style={{ color }}>{item}</List.Item>}
+      />
     </div>
   );
 };
