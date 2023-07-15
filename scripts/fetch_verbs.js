@@ -41,19 +41,22 @@ function handleResult(queryWord, e) {
   const root = HTMLParser.parse(e);
   const conjugaisonContainer = root.getElementById("conjugaison-container");
 
-  const groupNode = root
+  let wordGroup = null;
+  const groupParent = root
     .getElementById("main-container")
     .getElementsByTagName("p")
     .filter((e) => {
       return e.text.includes("est un verbe du");
-    })[0].text;
-  let wordGroup = null;
-  if (groupNode.includes("premier groupe")) {
-    wordGroup = 1;
-  } else if (groupNode.includes("deuxième groupe")) {
-    wordGroup = 2;
-  } else if (groupNode.includes("troisième groupe")) {
-    wordGroup = 3;
+    });
+  if (groupParent && groupParent.length > 0) {
+    const groupNode = ff[0].text;
+    if (groupNode.includes("premier groupe")) {
+      wordGroup = 1;
+    } else if (groupNode.includes("deuxième groupe")) {
+      wordGroup = 2;
+    } else if (groupNode.includes("troisième groupe")) {
+      wordGroup = 3;
+    }
   }
 
   const present = getArray(conjugaisonContainer, "indicatif", "Présent");
@@ -98,13 +101,7 @@ function alreadyExistedResult(queryWord, title) {
     const filterResult = cacheResult.filter((e) => {
       return e.query == queryWord;
     });
-    if (
-      filterResult &&
-      filterResult.length > 0 &&
-      filterResult[0].present &&
-      filterResult[0].present.front &&
-      filterResult[0].present.back
-    ) {
+    if (filterResult && filterResult.length > 0) {
       return filterResult[0];
     }
   }
@@ -116,7 +113,7 @@ async function getApi(queryWord, title, refetch) {
   const oldResult = alreadyExistedResult(queryWord, title);
   // const oldResult = null;
   if (oldResult && !refetch) {
-    console.log(`Conjugation oldReuslt: ${queryWord}`);
+    // console.log(`Conjugation oldReuslt: ${queryWord}`);
     return oldResult;
   } else {
     console.log(`fetch conjugation: ${queryWord}`);

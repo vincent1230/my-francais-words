@@ -40,6 +40,20 @@ export const Conjugation = (): ReactElement => {
   );
 };
 
+export const playAnswer = (answer: string | undefined, mute = false) => {
+  if (answer) {
+    const tail = encode(answer);
+    const baseUrl =
+      "https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Bruno22k?inputText=";
+    const audio = new Audio(baseUrl + tail);
+    if (mute) {
+      audio.volume = 0;
+      audio.muted = true;
+    }
+    audio.play();
+  }
+};
+
 export const RandomVerb = (): ReactElement => {
   const [verb, setVerb] = useState<Verb>();
   const [sujet, setSujet] = useState<string>();
@@ -86,20 +100,6 @@ export const RandomVerb = (): ReactElement => {
   useEffect(() => {
     playAnswer(answer, true);
   }, [answer]);
-
-  const playAnswer = (answer: string | undefined, mute = false) => {
-    if (answer) {
-      const tail = encode(answer);
-      const baseUrl =
-        "https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Bruno22k?inputText=";
-      const audio = new Audio(baseUrl + tail);
-      if (mute) {
-        audio.volume = 0;
-        audio.muted = true;
-      }
-      audio.play();
-    }
-  };
 
   return (
     <div
@@ -224,7 +224,7 @@ export const RandomVerb = (): ReactElement => {
                 <ConjugationList
                   data={verb.futurSimple}
                   title={"Futur simple"}
-                  color={"#fa541c"}
+                  color={"#eb2f96"}
                 />
               </>
             )}
@@ -248,16 +248,35 @@ export const ConjugationList = (props: {
 
   return (
     <div>
-      <div style={{ fontSize: 18, textAlign: "center", marginBottom: 10, color }}>
+      <div
+        style={{
+          fontSize: 20,
+          textAlign: "center",
+          marginBottom: 10,
+          color,
+          fontWeight: "bold",
+        }}
+      >
         {title}
       </div>
 
       <List
-        style={{ marginLeft: 20 }}
+        style={{ marginLeft: 10, marginRight: 10 }}
         size="small"
         bordered
         dataSource={data}
-        renderItem={(item) => <List.Item style={{ color }}>{item}</List.Item>}
+        renderItem={(item) => (
+          <List.Item style={{ color }}>
+            <div
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                playAnswer(item, false);
+              }}
+            >
+              {item}
+            </div>
+          </List.Item>
+        )}
       />
     </div>
   );
