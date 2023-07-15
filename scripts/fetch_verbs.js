@@ -49,7 +49,7 @@ function handleResult(queryWord, e) {
       return e.text.includes("est un verbe du");
     });
   if (groupParent && groupParent.length > 0) {
-    const groupNode = ff[0].text;
+    const groupNode = groupParent[0].text;
     if (groupNode.includes("premier groupe")) {
       wordGroup = 1;
     } else if (groupNode.includes("deuxième groupe")) {
