@@ -430,7 +430,6 @@ exports.verbs_practice = [
   "boire",
 ];
 
-exports.verbs_participe_passe_practice2 = ["voir"];
 exports.verbs_participe_passe_practice = [
   "lire",
   "voir",

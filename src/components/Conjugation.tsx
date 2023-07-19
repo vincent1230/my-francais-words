@@ -9,6 +9,7 @@ type Verb = {
   passeCompose: string[];
   imparfait: string[];
   futurSimple: string[];
+  subjonctifPresent: string[];
   query: string;
 };
 
@@ -19,12 +20,12 @@ export const Conjugation = (): ReactElement => {
     <div>
       <h1
         style={{
-          fontSize: 35,
+          fontSize: 25,
           textAlign: "center",
           color: "#303030",
         }}
       >
-        Conjugation
+        Conjugaison
       </h1>
       <ConfigProvider
         theme={{
@@ -112,8 +113,7 @@ export const RandomVerb = (): ReactElement => {
     >
       <div
         style={{
-          marginTop: 20,
-          fontSize: "3em",
+          fontSize: "2em",
           display: "flex",
           opacity: 0.5,
           justifyContent: "center",
@@ -126,19 +126,17 @@ export const RandomVerb = (): ReactElement => {
         style={{
           display: "flex",
           justifyContent: "center",
-          marginTop: 20,
+          marginTop: 15,
         }}
       >
         <Button
           style={{
-            width: "240px",
-            height: "70px",
-            // paddingTop: 15,
-            // paddingBottom: 15,
+            width: "150px",
+            height: "50px",
             alignSelf: "center",
             fontWeight: "bold",
             letterSpacing: 0.1,
-            fontSize: "1.6em",
+            fontSize: "1.3em",
             boxShadow: "0 0px",
           }}
           type="primary"
@@ -156,8 +154,8 @@ export const RandomVerb = (): ReactElement => {
         style={{
           display: "flex",
           justifyContent: "center",
-          fontSize: 50,
-          marginTop: 15,
+          fontSize: 20,
+          marginTop: 10,
         }}
       >
         👇
@@ -166,22 +164,21 @@ export const RandomVerb = (): ReactElement => {
         <>
           <div
             style={{
-              fontSize: "3em",
+              fontSize: "2em",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
             {answer}
-
             <Button
               style={{
-                width: "240px",
-                height: "70px",
-                marginTop: 20,
+                width: "150px",
+                height: "50px",
+                marginTop: 15,
                 alignSelf: "center",
                 fontWeight: "bold",
-                fontSize: "1.6rem",
+                fontSize: "1.3rem",
                 boxShadow: "0 0px",
               }}
               type="primary"
@@ -196,8 +193,8 @@ export const RandomVerb = (): ReactElement => {
           </div>
           <div
             style={{
-              marginTop: 50,
-              fontSize: "3em",
+              marginTop: 20,
+              fontSize: "2em",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
@@ -205,28 +202,55 @@ export const RandomVerb = (): ReactElement => {
             }}
           >
             {verb && (
-              <>
-                <ConjugationList
-                  data={verb.present}
-                  title={"Présent"}
-                  color={"#cf1322"}
-                />
-                <ConjugationList
-                  data={verb.passeCompose}
-                  title={"Passé composé"}
-                  color={"#1677ff"}
-                />
-                <ConjugationList
-                  data={verb.imparfait}
-                  title={"Imparfait"}
-                  color={"#237804"}
-                />
-                <ConjugationList
-                  data={verb.futurSimple}
-                  title={"Futur simple"}
-                  color={"#eb2f96"}
-                />
-              </>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
+                  <ConjugationList
+                    data={verb.present}
+                    title={"Présent"}
+                    color={"#cf1322"}
+                  />
+                  <ConjugationList
+                    data={verb.passeCompose}
+                    title={"Passé composé"}
+                    color={"#1677ff"}
+                  />
+
+                  <ConjugationList
+                    data={verb.futurSimple}
+                    title={"Futur simple"}
+                    color={"#722ed1"}
+                  />
+                </div>
+                <div
+                  style={{
+                    marginTop: 20,
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                  }}
+                >
+                  <ConjugationList
+                    data={verb.imparfait}
+                    title={"Imparfait"}
+                    color={"#237804"}
+                  />
+                  <ConjugationList
+                    data={verb.subjonctifPresent}
+                    title={"Subjonctif"}
+                    color={"#d48806"}
+                  />
+                </div>
+              </div>
             )}
           </div>
         </>
@@ -261,14 +285,14 @@ export const ConjugationList = (props: {
       </div>
 
       <List
-        style={{ marginLeft: 10, marginRight: 10 }}
+        style={{ marginLeft: 15, marginRight: 15 }}
         size="small"
         bordered
         dataSource={data}
         renderItem={(item) => (
           <List.Item style={{ color }}>
             <div
-              style={{ cursor: "pointer", fontSize: 16 }}
+              style={{ cursor: "pointer", fontSize: 20 }}
               onClick={() => {
                 playAnswer(item, false);
               }}

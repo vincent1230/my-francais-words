@@ -63,8 +63,17 @@ function handleResult(queryWord, e) {
   const passeCompose = getArray(conjugaisonContainer, "indicatif", "Passé composé");
   const imparfait = getArray(conjugaisonContainer, "indicatif", "Imparfait");
   const futurSimple = getArray(conjugaisonContainer, "indicatif", "Futur simple");
+  const subjonctifPresent = getArray(conjugaisonContainer, "subjonctif", "Présent");
 
-  return { query: queryWord, present, passeCompose, imparfait, futurSimple, wordGroup };
+  return {
+    query: queryWord,
+    present,
+    passeCompose,
+    imparfait,
+    futurSimple,
+    subjonctifPresent,
+    wordGroup,
+  };
 }
 
 function getArray(container, section, h3) {
