@@ -23,7 +23,14 @@ async function loadTranscript() {
     const paragraphs = processedText
       .split("\n")
       .filter((p) => p.trim())
-      .map((p) => `<p>${p.trim()}</p>`)
+      .map((p, index) => {
+        if (p.includes("<time>")) {
+          return `<p>${p}</p>`;
+        }
+        return `<p><span class="paragraph-number">${
+          index + 1
+        }</span>${p.trim()}</p>`;
+      })
       .join("");
 
     document.getElementById("transcript-content").innerHTML = paragraphs;
