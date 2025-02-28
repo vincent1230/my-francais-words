@@ -52,11 +52,11 @@ main {
 
 .content {
     font-family: var(--body-font);
-    font-size: 1.9rem;
+    font-size: 2.4rem;  /* 从 3.8rem 调小到 2.4rem */
     line-height: 1.6;
     font-weight: 400;
     letter-spacing: 0.01em;
-    color: #2C2C2C;  /* 稍微深一点的文字颜色 */
+    color: #2C2C2C;
 }
 
 .content p {
@@ -66,18 +66,18 @@ main {
 
 /* 段落序号样式 */
 .content p .paragraph-number {
-    display: block;  /* 改为 block 使其单独成行 */
+    display: block;
     color: #C45627;
     font-weight: 700;
     font-family: 'JetBrainsMono', monospace;
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 1.2rem;  /* 从 1.8rem 调小到 1.2rem */
+    padding: 0.6rem 1.2rem;  /* 相应调整内边距 */
     background-color: #FFF5F0;
     border-radius: 4px;
-    margin-bottom: 1rem;  /* 添加底部间距 */
+    margin-bottom: 1rem;
     letter-spacing: 0.05em;
     border: 1px solid #FFE4D6;
-    width: fit-content;  /* 宽度适应内容 */
+    width: fit-content;
 }
 
 /* 调整段落样式 */
